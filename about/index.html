@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="">
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+<!--script>
+    //スマホのページ内リンク用 *一旦コメントアウト
+    //$(function () {
+    //  let headH = $("header").outerHeight(); //ヘッダーの高さを取得
+    //  let animeSpeed = 500; //アニメーションスピード
+    //  $("a[href^='#']").on({
+    //      "click": function () {
+    //          let href = $(this).attr("href");
+    //          let target = $(href == "#" || href === "" ? "html" : href);
+    //          let position;
+    //          position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
+    //          $("body,html").stop().animate({
+    //              scrollTop: position
+    //          }, animeSpeed);
+    //          return false;
+    //      }
+    //  });
+  //});
+  </script-->
+</head>
+<body>
+<header>
+  <div class="logo"><a href="../index.html">Material Book</a></div>
+
+<!--menu start-->
+<div class="hamburger-menu">
+<!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+<input type="checkbox" id="menu-btn-check">
+<!--  ハンバーガーボタン -->
+<label for="menu-btn-check" class="menu-btn"><span></span></label>
+<!--menu inner-->
+<div class="menu-content">
+<ul>
+<li><a href="../list/index.html">List</a></li>
+<li><a href="#">Article</a></li>
+<li><a href="#">About</a></li>
+</ul>
+</div>
+<!--/menu inner end-->
+</div>
+<!--/menu end-->
+
+</header>
+<main>
+
+
+<div class="contents">
+<section class="about">
+<h1 class="mb20">About</h1>
+<h2 class="mb20">作った目的</h2>
+<p>このリポジトリの作成目的は…</p>
+<ul class="mb20">
+   <li>現段階でのポートフォリオ的なもの</li>
+   <li>忘備録的なもの</li>
+   <li>予習・復習</li> 
+</ul>
+<p class="mb10">何かを積極的に発信するという目的もないので、webサイトとして公開する計画はありません。</p>
+<p class="mb10">UIやデザインを考え出すとキリがなくなるので、至ってベーシックなレスポンシブにしてあります。</p>
+<p class="mb10">何か新しいCSSやjsを試したくなったらページが増える、もしくは作りや書き方を変えるかもしれません。</p>
+<p class="mb40">特にReactをちゃんと取得したいのですが、それはまた別のリポジトリで。こっちは静的な感じで。</p>
+
+<!--h2 class="mb20">ざっくりコーディング歴</h2>
+<dl>
+  <dt>求人サイト</dt>
+  <dd>html, css, JavaScript</dd>
+  <dt>ポイントサイト</dt>
+  <dd>html, css, JavaScript, php(Laravel)/既存ファイルを元に修正</dd>
+  <dt>コーポレートサイト</dt>
+  <dd>html, css, JavaScript</dd>
+  <dt>企業イントラサイト</dt>
+  <dd>html, css, JavaScript</dd>
+  <dt>管理画面</dt>
+  <dd>html, css, JavaScript, Bootstrap</dd>
+  <dt>その他キャンペーンページ、オンラインイベント用サイト等</dt>
+  <dd>html, css, JavaScript, php, WP</dd>
+</dl-->
+</section><!--/about-->
+
+
+
+</div><!--/contents-->
+</main>
+<footer>
+ <p>&copy;スナックいばら</p>
+</footer>
+
+</body>
+</html>

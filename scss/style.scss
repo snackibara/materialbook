@@ -1,0 +1,214 @@
+/* scss
+※ブレイクポイントは980px,768px,480pxではなく
+※ブレイクポイントは667x
+*/
+
+$txt-color: #333;
+$txt-white:#fff;
+$color-2nd:#85b6e1;
+$color-3rd:#ccc;
+$elseSP:768px;
+
+@forward 'menu';
+@forward 'about';
+
+@for $i from 1 through 10 {
+  .mt#{$i * 5} { 
+    margin-top: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .mr#{$i * 5} { 
+    margin-right: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .mb#{$i * 5} { 
+    margin-bottom: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .ml#{$i * 5} { 
+    margin-left: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .ma#{$i * 5} { 
+    margin: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .pt#{$i * 5} { 
+    padding-top: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .pr#{$i * 5} { 
+    padding-right: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .pb#{$i * 5} { 
+    padding-bottom: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .pl#{$i * 5} { 
+    padding-left: 5px * $i;
+  }
+}
+@for $i from 1 through 10 {
+  .pa#{$i * 5} { 
+    padding: 5px * $i;
+  }
+}
+
+* {box-sizing: border-box;}
+html {font-size: 62.5%; height: 100%;}
+body {width: 100%; margin: 0; padding: 0; font-size: 1.7rem; line-height: 1.6; min-height: 100vh; display: flex; flex-flow: column;}
+header{display: flex; justify-content: space-between;width: 100%; height: 70px; padding: 10px;
+  @media (min-width: ($elseSP)) {
+    height: 100px;
+  }
+  .logo {font-size: 3rem; font-weight: 700;
+    @media (min-width: ($elseSP)) { padding: 10px 0 0 20px;}
+}
+}
+main {flex: 1;}
+h1 {padding-left: 5px;font-size: 2.4rem; font-weight: bold; border-bottom: 2px solid $txt-color;}
+h2 {font-size: 1.8rem; border-left: double 10px $txt-color;padding-left: 10px; font-weight: bold;
+  &.name_cate {
+    font-size: 2rem; padding: 5px;border-bottom: solid 5px $color-3rd;position: relative; border-left: 0;
+  &::after {
+    position: absolute;
+    content: " ";
+    display: block;
+    border-bottom: solid 5px $color-2nd;
+    bottom: -5px;
+    left: 0;
+    width: 30%;
+  }
+}
+}
+/*h3 {font-size: 1.8rem; border-left: dotted 5px $color-2nd;padding-left: 10px;}*/
+footer {background-color: $color-2nd; color:$txt-white; padding: 20px;width: 100%; position: sticky;top: 100vh;
+  p{text-align: center; font-size: 1.3rem;}
+}
+section {margin-bottom: 20px;
+  @media (min-width: ($elseSP)) {
+    margin-bottom: 30px;
+  }
+}
+.contents { width: 100%; margin: 0; padding: 10px;
+  @media (min-width: ($elseSP)) { width: 80%; margin: 0 auto 40px;}
+}
+
+
+ul.cards_h, ul.cards_v { display: block;
+  li { width: 100%;border: 1px solid $color-3rd; border-radius: 4px; margin-bottom: 10px;
+    a { display: block;}
+  }
+  @media (min-width: ($elseSP)) { 
+  display: flex; justify-content: space-between; flex-wrap: wrap;
+  &::after {display: block;content:"";width: calc((100% - 40px) / 3); }
+  li {width: calc((100% - 40px) / 3); margin-bottom: 20px;}
+  }
+}
+
+/*カード横型, リスト*/
+ul.cards_h li a, ul.lst_content li a {padding: 10px;
+&:hover {opacity: 0.8;}
+}
+
+ul.cards_h li a dl, ul.lst_content li a dl {display: flex; flex-flow: row;
+      dt {width:30%; height: auto; aspect-ratio: 1; line-height: 0;
+        img {width: 100%; height: auto;}
+      }
+      dd {padding-left: 10px; width: 100%;
+        @media (min-width: ($elseSP)) {
+          width: 100%; padding-left: 20px;
+        }
+
+      dl{ flex-flow: column; width: 100%;
+        dt {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px;
+          @media (min-width: ($elseSP)) {
+            font-size: 2.4rem; 
+          }
+        }
+        dd {width:100%;padding: 0;
+          display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 制限したい行数が3の場合 */
+  overflow: hidden;}
+      }
+    }
+    }
+
+/*カード縦型*/    
+ul.cards_v li {overflow: hidden;
+  a {
+    &:hover {opacity: .8;}
+    dl {display: flex; flex-flow: column;
+      dt {width:100%; height: auto; aspect-ratio: 8 / 5; line-height: 0; overflow: hidden;
+        img {width: 100%; height: auto;}
+      }
+      dd {padding: 10px; width: 100%;
+      dl {flex-flow: column; width: 100%;
+        dt {line-height: 1.4; width: 100%; aspect-ratio: auto;}
+        dd {width:100%;padding: 0;display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3; /* 制限したい行数が3の場合 */
+          overflow: hidden;}
+      }
+      }
+    }
+  }
+}
+.box_txtR {display: flex; flex-flow: row-reverse;
+  .txtlnk {color: #2e47a1;
+  &:hover { opacity: .8;}
+}  
+}
+.box_btn {display: flex; justify-content: center; align-items: center;
+  .btn_more {padding: 10px; color: $txt-white; background-color:$color-2nd; width: 90%; text-align: center;
+    &:hover { opacity: .8;}
+    @media (min-width: ($elseSP)) { width: 30%;}
+}
+}
+
+/*リスト*/
+ul.lst_content { display: block;
+  li { width: 100%;border: 1px solid $color-3rd; border-radius: 4px; margin-bottom: 10px;
+    a { display: block;}
+  }
+  @media (min-width: ($elseSP)) { 
+  display: flex; flex-flow: column; border:1px 0;
+  li {margin-bottom: 20px;}
+  }
+}
+.list ul.lst_content li a dl {display: flex; flex-flow: row;
+        dt {width:30%;
+          @media (min-width: ($elseSP)) {
+            width: 14%;
+          }
+        }
+        dd {padding-left: 10px; width: 100%;
+          @media (min-width: ($elseSP)) {
+            padding-left: 20px;
+          }
+          dl{ flex-flow: column;
+            dt {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px;
+              @media (min-width: ($elseSP)) {
+                font-size: 2.4rem; 
+              }
+            }
+            dd {width:100%;padding: 0;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2; /* 制限したい行数が3の場合 */
+              overflow: hidden;}
+            }
+          }
+        }
+
+
