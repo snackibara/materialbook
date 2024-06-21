@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="">
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+<!--script>
+    //スマホのページ内リンク用
+    $(function () {
+      var headH = $("header").outerHeight(); //ヘッダーの高さを取得
+      var animeSpeed = 500; //アニメーションスピード
+      $("a[href^='#']").on({
+          "click": function () {
+              var href = $(this).attr("href");
+              var target = $(href == "#" || href === "" ? "html" : href);
+              var position;
+              position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
+              $("body,html").stop().animate({
+                  scrollTop: position
+              }, animeSpeed);
+              return false;
+          }
+      });
+  });
+  </script-->
+</head>
+<body>
+<header>
+  <div class="logo"><a href="../index.html">Material Book</a></div>
+  
+  <!--menu start-->
+  <div class="hamburger-menu">
+  <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+  <input type="checkbox" id="menu-btn-check">
+  <!--  ハンバーガーボタン -->
+  <label for="menu-btn-check" class="menu-btn"><span></span></label>
+  <!--menu inner-->
+  <div class="menu-content">
+  <ul>
+  <li><a href="../list/index.html">List</a></li>
+  <li><a href="#">Article</a></li>
+  <li><a href="#">About</a></li>
+  </ul>
+  </div>
+  <!--/menu inner end-->
+  </div>
+  <!--/menu end-->
+  
+</header>
+
+<main>
+
+
+<div class="contents">
+<section class="about">
+  <h1 class="mb20">スタイルクエリについて考える</h1>
+  <p class="mb10">コンテナクエエリと併用してスタイルクエリを使ってみる。<br>
+  確かにこれは動的な箇所と組み合わせるとヒジョーに便利。な気がする。Nweが付く付かないとかカテゴリ毎に色を変えられるとか。手を広げすぎずという判断も重要だけど。</p>
+  <p class="mb20">コンテナクエリと併用してるって言ってもコンテナクエリの記述は使いまわしてるから、コンテナクエエリ自体の利便性はまだ上がった気はしないけど、コピペするなら1回書いたら…（以下略</p>
+
+<style>
+.product-area {container-type: inline-size;}
+.product-list {display: flex; justify-content: space-between; flex-wrap: wrap;}
+.product-card-container {width: calc((100% - 40px) / 2);margin-bottom: 20px;}
+.meta {padding: 1rem;}
+
+@container (max-width: 430px) {
+  .product-list {flex-direction:column; justify-content: center;}  
+  .product-card-container { width: 100%!Important;}
+}
+
+.media-img { position: relative;
+  }
+.media-img img { width: 100%; height: auto;
+  }
+
+/* style query demo */
+/* want to see if the --detail var is not blank, then set the content to the content of its value */
+@container style(--detail: favorite) {
+  .ribbon {
+  display: inline-block;
+  position: absolute;
+  height: 60px;/*高さ*/
+  line-height: 60px;/*高さ*/
+  text-align: center;
+  padding: 0 40px 0 18px;/*文字の左右の余白*/
+  font-size: 18px;/*文字サイズ*/
+  background: #d29632;/*背景色*/
+  color: #FFF;/*文字色*/
+  box-sizing: border-box;
+  left: -4px;
+  top: 10px;
+}
+.ribbon:before {content: 'favorite';}
+.ribbon:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.ribbon:after {
+  top: 0;
+  right: -15px;
+  border-width: 30px 15px 30px 0px;
+  border-color: #d29632 transparent #d29632 #d29632;
+  border-style: solid;
+}
+
+  .comment-block {
+    display: block;
+  }
+  .product-card {
+    border: 4px solid #c17474;
+  }
+}
+
+
+
+
+
+</style>
+
+<div class="product-area">
+  <div class="section-header">
+    <h2 class="mb20">ロンドンでのお気に入り風景</h2>
+  </div>
+  
+  <div class="product-list four-by">
+    <div class="product-card-container" style="--detail: test">
+      <div class="product-card">
+        <div class="media-img">
+          <img src="../images/IMG_6842.jpg" alt="エロス像">
+          <div class="ribbon4"></div>
+        </div>
+        <div class="meta">
+          <h3>ピカデリーサーカスのエロス像</h3>
+          <p>正式名称は違うけど待ち合わせと言えばエロス像</p>
+        </div>
+      </div>
+    </div>
+    <div class="product-card-container">
+      <div class="product-card">
+        <div class="media-img">
+          <img src="../images/IMG_6780.jpg" alt="ウエストミンスター・アビー">
+          <div class="comment-block"></div>
+        </div>
+        <div class="meta">
+          <h3>ウエストミンスター・アビーの西側</h3>
+          <p>扉の向こうはとにかく圧巻。</p>
+        </div>
+      </div>
+    </div>
+    <div class="product-card-container">
+      <div class="product-card">
+        <div class="media-img">
+          <img src="../images/IMG_6840.jpg" alt="ピカデリーサーカス出口">
+          <div class="comment-block"></div>
+        </div>
+        <div class="meta">
+          <h3>ピカデリーサーカス駅の出口</h3>
+          <p>ドキドキの瞬間</p>
+        </div>
+      </div>
+    </div>
+    <div class="product-card-container" style="--detail: favorite">
+      <div class="product-card">
+        <div class="media-img">
+          <img src="../images/IMG_6841.jpg" alt="リージェントストリート">
+          <div class="ribbon"></div>
+        </div>
+        <div class="meta">
+          <h3>リージェントストリート</h3>
+          <p>何度見ても曲線美が素晴らしい</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section><!--/about-->
+
+
+</div><!--/contents-->
+</main>
+<footer>
+ <p>&copy;スナックいばら</p>
+</footer>
+
+</body>
+</html>

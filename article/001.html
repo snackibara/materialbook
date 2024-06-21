@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
+<base href="">
+-->
+
+<title>Material Book</title>
+<!-- ドキュメントの簡単な説明 -->
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある)  -->
+<meta name="description" content="ページの説明">
+<meta name="keuwords" content="ページの関連キーワード">
+
+<!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
+<meta name="google" content="notranslate">
+<!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
+<meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
+
+<!-- SMS系
+<meta property="fb:app_id" content="FBから割り振られるID">
+<meta property="og:url" content="ページのURL">
+<meta property="og:type" content="website"> // カテゴリから選ぶ。トップページはwebsite、それ以外はarticleにしておけば問題ないものの、製品の紹介ページはproductにした方が良いが、それ以外は要確認
+<meta property="og:title" content="ページタイトル">
+<meta property="og:image" content="ページ用サムネのURL"> // ページのメインイメージを適用するが、サイズに注意
+<meta property="og:image:alt" content="サムネ画像のalt"> // 代替えテキストとして必要
+<meta property="og:description" content="ページの説明"> // 他のdescriptionと同じにしておく
+<meta property="og:site_name" content="サイト名">
+<meta property="og:locale:alternate" content="ja_JP">　// 設定しなくてもOK 
+<meta property="article:author" content=""> // 記事に対しての詳細な設定。無くても問題ない。
+
+//twitter (X)カード
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@アカウント名">
+<meta name="twitter:creator" content="@individual_account">
+<meta name="twitter:url" content="https://example.com/page.html">　//設定無くても問題ないししない方がページ毎にURL入るのでは？
+<meta name="twitter:title" content="ページタイトル">　//設定無くても問題ないししない方がページ毎にページタイトル入るのでは？
+<meta name="twitter:description" content="ページの説明">　//設定無くても問題ないししない方がページ毎にページタイトル入るのでは？
+<meta name="twitter:image" content="サムネ画像のalt">　//設定無くても問題ないししない方がページ毎に画像が入るのでは？
+<meta name="twitter:image:alt" content="サムネ画像のalt">　//サムネを設定するなら必要
+-->
+
+
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+<!--script>
+//スマホのページ内リンク用 *一旦コメントアウト
+//$(function () {
+//  let headH = $("header").outerHeight(); //ヘッダーの高さを取得
+//  let animeSpeed = 500; //アニメーションスピード
+//  $("a[href^='#']").on({
+//  "click": function () {
+//  let href = $(this).attr("href");
+//  let target = $(href == "#" || href === "" ? "html" : href);
+//  let position;
+//  position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
+//  $("body,html").stop().animate({
+//  scrollTop: position
+//  }, animeSpeed);
+//  return false;
+//  }
+//  });
+//});
+</script-->
+</head>
+<body>
+<header>
+  <div class="logo"><a href="../index.html">Material Book</a></div>
+  
+  <!--menu start-->
+  <div class="hamburger-menu">
+  <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+  <input type="checkbox" id="menu-btn-check">
+  <!--  ハンバーガーボタン -->
+  <label for="menu-btn-check" class="menu-btn"><span></span></label>
+  <!--menu inner-->
+  <div class="menu-content">
+  <ul>
+  <li><a href="../list/index.html">List</a></li>
+  <li><a href="#">Article</a></li>
+  <li><a href="#">About</a></li>
+  </ul>
+  </div>
+  <!--/menu inner end-->
+  </div>
+  <!--/menu end-->
+  
+</header>
+<main>
+
+
+<div class="contents">
+<section class="about">
+  <h1 class="mb20">コンテナクエリについて考える</h1>
+  <p class="mb10">慣れというのは絶対にあると思うんだけど「アテクシまだまだメディアクエリの方が楽！」というのが正直なところ。<br>
+  というのも下のrecommendをコンテナクエエリで設定したものの、幅の変更後のカード幅の設定で!Importantを付けないと元の設定幅のままになってしまったからで、メディアクエリではこれ使わない。なんで？<br>まだまだ勉強が必要だ。</p>
+  <p class="mb20">一人で作業する分には慣れもあるのでメディアクエリを使う方が作業スピードが抑えられるぞ。<br>やっぱりまだまだ勉強が必要だ。</p>
+<style>
+ul.cards { display: flex; flex-direction:row; justify-content: space-between; flex-wrap: wrap;}
+ul.cards li { width: calc((100% - 40px) / 3);border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;overflow: hidden;}
+ul.cards li a { display: block;}
+ul.cards li a:hover {opacity: .8;}
+ul.cards li a dl {display: flex; flex-flow: column;}
+ul.cards li a dl dt {width:100%; height: auto; aspect-ratio: 8 / 5; line-height: 0; overflow: hidden;}
+ul.cards li a dl dt img {width: 100%; height: auto;}
+ul.cards li a dl dd {padding: 10px; width: 100%;}
+ul.cards li a dl dd dl {flex-flow: column; width: 100%;}
+ul.cards li a dl dd dl dt {line-height: 1.4; width: 100%; aspect-ratio: auto;}
+ul.cards li a dl dd dl dd {width:100%;padding: 0;display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3; /* 制限したい行数が3の場合 */
+          overflow: hidden;}
+
+/*ここからコンテナクエリ用*/
+.recommends {
+  container-type: inline-size;
+}
+@container (max-width: 430px) {
+  ul.cards {flex-direction:column; justify-content: center;}  
+  ul.cards li { width: 100%!Important;}
+
+  /*ul.cards li a dl dt img {display: none;}*/
+}  
+</style>
+
+
+</section><!--/about-->
+
+<section class="recommends">
+<h2 class="mb20">recommends</h2>
+<ul class="cards">
+<li>
+  <a href="#" name="">
+  <dl>
+  <dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
+  <dd>
+<dl>
+<dt>おすすめ1タイトル</dt>
+<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
+</dl>
+</dd>
+  </dl>
+  </a>
+  </li>
+  <li>
+  <a href="#" name="">
+  <dl>
+  <dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
+  <dd>
+<dl>
+<dt>おすすめ2タイトル</dt>
+<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
+</dl>
+</dd>
+  </dl>
+  </a>
+  </li>
+  <li>
+  <a href="#" name="">
+  <dl>
+  <dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
+  <dd>
+<dl>
+<dt>おすすめ3タイトル</dt>
+<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
+</dl>
+</dd>
+  </dl>
+  </a>
+  </li>
+  <li>
+<a href="#" name="">
+<dl>
+<dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
+<dd>
+  <dl>
+  <dt>おすすめ1タイトル</dt>
+  <dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
+  </dl>
+  </dd>
+</dl>
+</a>
+</li>
+<li>
+<a href="#" name="">
+<dl>
+<dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
+<dd>
+  <dl>
+  <dt>おすすめ2タイトル</dt>
+  <dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
+  </dl>
+  </dd>
+</dl>
+</a>
+</li>
+<li>
+<a href="#" name="">
+<dl>
+<dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
+<dd>
+  <dl>
+  <dt>おすすめ3タイトル</dt>
+  <dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
+  </dl>
+  </dd>
+</dl>
+</a>
+</li>
+  </ul>
+  <div class="box_btn"><a href="#" class="btn_more">&gt;&gt;&nbsp;もっと見る</a></div>
+  </section><!--/recommends-->
+
+</div><!--/contents-->
+</main>
+<footer>
+ <p>&copy;スナックいばら</p>
+</footer>
+
+</body>
+</html>
