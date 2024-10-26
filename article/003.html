@@ -7,11 +7,11 @@
 <base href="">
 -->
     
-<title>Material Book | スタイルクエリについて考える</title>
+<title>Material Book | CSSで好きな記述</title>
 <!-- ドキュメントの簡単な説明 -->
 <!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
-<meta name="description" content="ページの説明">
-<meta name="keuwords" content="スタイルクエリ, CSS">
+<meta name="description" content="CSSで好きな記述について書きなぐる">
+<meta name="keuwords" content="CSS">
     
 <!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
 <meta name="google" content="notranslate">
@@ -87,139 +87,57 @@
   <!--/menu end-->
   
 </header>
-
 <main>
-
-
-<div class="contents">
-<section class="about">
-  <h1 class="mb20">スタイルクエリについて考える</h1>
-  <p class="mb10">コンテナクエエリと併用してスタイルクエリを使ってみる。<br>
-  確かにこれは動的な箇所と組み合わせるとヒジョーに便利。な気がする。Nweが付く付かないとかカテゴリ毎に色を変えられるとか。手を広げすぎずという判断も重要だけど。</p>
-  <p class="mb20">コンテナクエリと併用してるって言ってもコンテナクエリの記述は使いまわしてるから、コンテナクエエリ自体の利便性はまだ上がった気はしないけど、コピペするなら1回書いたら…（以下略</p>
-
 <style>
-.product-area {container-type: inline-size;}
-.product-list {display: flex; justify-content: space-between; flex-wrap: wrap;}
-.product-card-container {width: calc((100% - 40px) / 2);margin-bottom: 20px;}
-.meta {padding: 1rem;}
-
-@container (max-width: 430px) {
-  .product-list {flex-direction:column; justify-content: center;}  
-  .product-card-container { width: 100%!Important;}
-}
-
-.media-img { position: relative;
-  }
-.media-img img { width: 100%; height: auto;
-  }
-
-/* style query demo */
-/* want to see if the --detail var is not blank, then set the content to the content of its value */
-@container style(--detail: favorite) {
-  .ribbon {
-  display: inline-block;
-  position: absolute;
-  height: 60px;/*高さ*/
-  line-height: 60px;/*高さ*/
-  text-align: center;
-  padding: 0 40px 0 18px;/*文字の左右の余白*/
-  font-size: 18px;/*文字サイズ*/
-  background: #d29632;/*背景色*/
-  color: #FFF;/*文字色*/
-  box-sizing: border-box;
-  left: -4px;
-  top: 10px;
-}
-.ribbon:before {content: 'favorite';}
-.ribbon:after {
-  position: absolute;
-  content: '';
-  width: 0px;
-  height: 0px;
-  z-index: 1;
-}
-
-.ribbon:after {
-  top: 0;
-  right: -15px;
-  border-width: 30px 15px 30px 0px;
-  border-color: #d29632 transparent #d29632 #d29632;
-  border-style: solid;
-}
-
-  .comment-block {
-    display: block;
-  }
-  .product-card {
-    border: 4px solid #c17474;
-  }
-}
-
-
-
-
-
+  pre {padding: 1rem; background-color: #d6e9fa;}
 </style>
+<div class="contents">
+<section>
+  <h1 class="mb20">CSSで好きな記述</h1>
+  <p class="mb10">本当はカスケードレイヤー<span class="highlight">@layer</span>について考えたかったんだけど、CSSの色々を書いてたら「あーこの記述すき！」というのが頭から離れなくなったので、それについて書き殴ることにする。</p> 
+  <h2>calc((100% - 40px) / 3</h2>
+<pre>
+  li {
+    width: calc((100% - 40px) / 3);
+  }
+</pre>
 
-<div class="product-area">
-  <div class="section-header">
-    <h2 class="mb20">ロンドンでのお気に入り風景</h2>
-  </div>
+<p class="mb20">ズバリこれ！これはトップのカード型の枠の幅。<br>
+何が好きかって、3で割れないものでもCSSでそれなりにしてくれるという曖昧さ。<br>
+昔のデザイナーさんてPCの事だけ考えれば良かったけど、今やデバイスが増えて画面サイズもさまざま。でもCSSが3で割ってくれちゃうというCSSへの依存度を高めさせてくれる曖昧さがたまらない。
+いいんですCSSがそう指示してブラウザが再現してくれるんだから。<br>
+いや、細かく指定があれば指定しますけどね。<br>
+というスタンスでも割と許してもらえるのがこの記述。</p>
+
+<h2>justify-content: space-between;</h2>
+<pre>
+  ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+</pre>
+<p class="mb10">そしてこれ！これもトップのカード型flex。<br>
+  やはり割り切れないかもしれないものをCSSがカード同士の余白を勝手に割ってくれちゃうやつ。理由は先出のやつと同じ理由。<br>
+  デザイン的な意図でも無い限り、もうCSSとかブラウザに任せちゃいましょ。という人任せ感を持てる点は、これまでCSSを散々書いてきた中で気が抜けるひと時だったりする。
+</p>
+<p class="mb20">このあたりのCSSならスマホのブラウザのバージョンを気にせずに使えるところも大きなポイント。<br>
+スマホのブラウザはアプデしててもそれ以前にOSが古いどころか機種が古い人も世の中には沢山いる。そうなると「最新バージョンのブラウザで〜」というのも理解されない場合も多いのでサービスによっては機会損失を増やしかねないけど、この2つはほぼセーフなので安心できる。だから好き。</p>
+
+<p class="mb10">ところでカスケードレイヤー<span class="highlight">@layer</span>を使うとスタイルの優先順位の管理が以前より明確になるということなんだけど、これはルールをしっかり覚えてちゃんと設計して使わないと突貫工事のヒドイやつになりそう。勉強することいっぱいある。</p>
+
+
+
+
+
+
+
+
   
-  <div class="product-list four-by">
-    <div class="product-card-container" style="--detail: test">
-      <div class="product-card">
-        <div class="media-img">
-          <img src="../images/IMG_6842.jpg" alt="エロス像">
-          <div class="ribbon4"></div>
-        </div>
-        <div class="meta">
-          <h3>ピカデリーサーカスのエロス像</h3>
-          <p>正式名称は違うけど待ち合わせと言えばエロス像</p>
-        </div>
-      </div>
-    </div>
-    <div class="product-card-container">
-      <div class="product-card">
-        <div class="media-img">
-          <img src="../images/IMG_6780.jpg" alt="ウエストミンスター・アビー">
-          <div class="comment-block"></div>
-        </div>
-        <div class="meta">
-          <h3>ウエストミンスター・アビーの西側</h3>
-          <p>扉の向こうはとにかく圧巻。</p>
-        </div>
-      </div>
-    </div>
-    <div class="product-card-container">
-      <div class="product-card">
-        <div class="media-img">
-          <img src="../images/IMG_6840.jpg" alt="ピカデリーサーカス出口">
-          <div class="comment-block"></div>
-        </div>
-        <div class="meta">
-          <h3>ピカデリーサーカス駅の出口</h3>
-          <p>ドキドキの瞬間</p>
-        </div>
-      </div>
-    </div>
-    <div class="product-card-container" style="--detail: favorite">
-      <div class="product-card">
-        <div class="media-img">
-          <img src="../images/IMG_6841.jpg" alt="リージェントストリート">
-          <div class="ribbon"></div>
-        </div>
-        <div class="meta">
-          <h3>リージェントストリート</h3>
-          <p>何度見ても曲線美が素晴らしい</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 </div>
 
-</section><!--/about-->
+</section>
 
 
 </div><!--/contents-->

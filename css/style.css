@@ -1,4 +1,8 @@
 @charset "UTF-8";
+/* scss
+※ブレイクポイントは980px,768px,480pxではなく
+※ブレイクポイントは667x
+*/
 /*-----menu*/
 /* menu button */
 .menu-btn {
@@ -123,10 +127,6 @@
   list-style-position: inside;
 }
 
-/* scss
-※ブレイクポイントは980px,768px,480pxではなく
-※ブレイクポイントは667x
-*/
 .mt5 {
   margin-top: 5px;
 }
@@ -604,6 +604,12 @@ h2.name_cate::after {
 }
 
 /*h3 {font-size: 1.8rem; border-left: dotted 5px $color-2nd;padding-left: 10px;}*/
+.highlight {
+  background-color: #f6eb9b;
+  padding: 2px 5px;
+  font-size: 1.6rem;
+}
+
 footer {
   background-color: #85b6e1;
   color: #fff;
