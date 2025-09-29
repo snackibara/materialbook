@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
+<base href="">
+-->
+
+<title>Material Book | 疑似クラス:has()について考える</title>
+<!-- ドキュメントの簡単な説明 -->
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある)  -->
+<meta name="description" content="ページの説明">
+<meta name="keuwords" content="ページの関連キーワード">
+
+<!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
+<meta name="google" content="notranslate">
+<!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
+<meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
+
+<!-- SMS系
+<meta property="fb:app_id" content="FBから割り振られるID">
+<meta property="og:url" content="ページのURL">
+<meta property="og:type" content="website"> // カテゴリから選ぶ。トップページはwebsite、それ以外はarticleにしておけば問題ないものの、製品の紹介ページはproductにした方が良いが、それ以外は要確認
+<meta property="og:title" content="ページタイトル">
+<meta property="og:image" content="ページ用サムネのURL"> // ページのメインイメージを適用するが、サイズに注意
+<meta property="og:image:alt" content="サムネ画像のalt"> // 代替えテキストとして必要
+<meta property="og:description" content="ページの説明"> // 他のdescriptionと同じにしておく
+<meta property="og:site_name" content="サイト名">
+<meta property="og:locale:alternate" content="ja_JP">　// 設定しなくてもOK 
+<meta property="article:author" content=""> // 記事に対しての詳細な設定。無くても問題ない。
+
+//twitter (X)カード
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@アカウント名">
+<meta name="twitter:creator" content="@individual_account">
+<meta name="twitter:url" content="https://example.com/page.html">　//設定無くても問題ないししない方がページ毎にURL入るのでは？
+<meta name="twitter:title" content="ページタイトル">　//設定無くても問題ないししない方がページ毎にページタイトル入るのでは？
+<meta name="twitter:description" content="ページの説明">　//設定無くても問題ないししない方がページ毎にページタイトル入るのでは？
+<meta name="twitter:image" content="サムネ画像のalt">　//設定無くても問題ないししない方がページ毎に画像が入るのでは？
+<meta name="twitter:image:alt" content="サムネ画像のalt">　//サムネを設定するなら必要
+-->
+
+
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+<!--script>
+//スマホのページ内リンク用 *一旦コメントアウト
+//$(function () {
+//  let headH = $("header").outerHeight(); //ヘッダーの高さを取得
+//  let animeSpeed = 500; //アニメーションスピード
+//  $("a[href^='#']").on({
+//  "click": function () {
+//  let href = $(this).attr("href");
+//  let target = $(href == "#" || href === "" ? "html" : href);
+//  let position;
+//  position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
+//  $("body,html").stop().animate({
+//  scrollTop: position
+//  }, animeSpeed);
+//  return false;
+//  }
+//  });
+//});
+</script-->
+</head>
+<body>
+<header>
+  <div class="logo"><a href="../index.html">Material Book</a></div>
+  
+  <!--menu start-->
+  <div class="hamburger-menu">
+  <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+  <input type="checkbox" id="menu-btn-check">
+  <!--  ハンバーガーボタン -->
+  <label for="menu-btn-check" class="menu-btn"><span></span></label>
+  <!--menu inner-->
+  <div class="menu-content">
+  <ul>
+  <li><a href="../list/index.html">List</a></li>
+  <li><a href="#">Article</a></li>
+  <li><a href="#">About</a></li>
+  </ul>
+  </div>
+  <!--/menu inner end-->
+  </div>
+  <!--/menu end-->
+  
+</header>
+<main>
+  <style>
+  html, body {
+    block-size: 100%;
+  }
+  
+  .scroll-layout {
+    display: grid;
+    grid-template-areas: 
+      "left scroll right"
+      ". markers .";
+    
+    grid-template-areas: 
+      "scroll scroll scroll"
+      "left markers right";
+    
+    grid-template-columns: auto 1fr auto;
+    margin: 2rem 0;
+  }
+
+   .scroll-layout .carousel {
+      grid-area: scroll;
+    }
+  
+  .carousel {
+    max-inline-size: 100cqi;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+  }
+
+  .content {
+    display: grid;
+    grid: 50vmin / auto-flow 50vmin;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+  }
+
+    .content li {
+      list-style-type: none;
+      border: 3px solid #888;
+    }
+  
+
+.carousel {
+  /*overflow-x: auto;  スクロールを非表示にしたい*/
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+}
+  
+  .carousel li {
+    scroll-snap-align: center;
+  }
+
+/* scroll button */
+  .carousel::scroll-button(*) {
+    inline-size: 48px;
+    aspect-ratio: 1;
+    border-radius: 1e3px;
+    border: 2px solid #6ab0ee;
+    margin: 5px;
+  }
+  
+  .carousel::scroll-button(*):focus-visible {
+    outline-offset: 5px;
+  }
+  
+  .carousel::scroll-button(*):not(:disabled):is(:hover, :active) {
+    background-color: Canvas;
+  }
+  
+  .carousel::scroll-button(*):not(:disabled):active {
+    scale: 90%;
+  }
+  
+  .carousel::scroll-button(left) {
+    content: "⬅" / "Scroll Left";
+    grid-area: left;
+    color: #6ab0ee;
+  }
+  
+  .carousel::scroll-button(right) {
+    content: "⮕" / "Scroll Right";
+    grid-area: right;
+    color: #6ab0ee;
+  }
+
+
+/* scroll markers */
+.carousel {
+  scroll-marker-group: after;
+}
+  .carousel::scroll-marker-group {
+    grid-area: markers;
+    display: grid;
+    place-content: safe center;
+    grid: 30px / auto-flow 30px;
+    gap: 15px;
+    padding: 15px;
+    scroll-padding: 15px;
+    overflow: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /*.carousel > .content > li {*/
+    .carousel > .content > li::scroll-marker {
+      content: " ";
+      border: 1px solid #bbb;
+      border-radius: 50%;
+      outline-offset: 4px;
+      -webkit-tap-highlight-color: transparent;
+      scroll-snap-align: center;
+    }
+    
+    .carousel > .content > li::scroll-marker:is(:hover, :focus-visible) {
+      border-color: #85b6e1;
+    }
+    
+    .carousel > .content > li::scroll-marker:target-current {
+      background: #85b6e1;
+      border-color: #85b6e1;
+    }
+  /*}*/
+
+  </style>
+
+
+<div class="scroll-layout">
+  <div class="carousel">
+    <ul class="content">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+  </div>
+</div>
+
+<div class="contents">
+<section>
+  <h1 class="mb20">CSSでカルーセルパネルを作れる！？</h1>
+  <p class="mb10">あーいよいよCSSでこれ作れるようになったで！ということで作ってみた。<br>
+  けどやっぱり自動でも動いて欲しいしループもしたい。と考えるとJS使う方がいいと思う。</p>
+  <p class="mb20"></p>
+
+
+
+</section>
+
+</div><!--/contents-->
+</main>
+<footer>
+ <p>&copy;スナックいばら</p>
+</footer>
+
+</body>
+</html>

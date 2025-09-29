@@ -763,6 +763,7 @@ ul.cards_v li a dl dd dl dt {
   line-height: 1.4;
   width: 100%;
   aspect-ratio: auto;
+  font-weight: bold;
 }
 ul.cards_v li a dl dd dl dd {
   width: 100%;
@@ -858,6 +859,7 @@ ul.lst_content li a {
   width: 100%;
   aspect-ratio: auto;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 @media (min-width: 768px) {
   .list ul.lst_content li a dl dd dl dt {

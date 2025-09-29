@@ -155,7 +155,7 @@ ul.cards_v li {overflow: hidden;
       }
       dd {padding: 10px; width: 100%;
       dl {flex-flow: column; width: 100%;
-        dt {line-height: 1.4; width: 100%; aspect-ratio: auto;}
+        dt {line-height: 1.4; width: 100%; aspect-ratio: auto; font-weight: bold;}
         dd {width:100%;padding: 0;display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 3; /* 制限したい行数が3の場合 */
@@ -198,7 +198,7 @@ ul.lst_content { display: block;
             padding-left: 20px;
           }
           dl{ flex-flow: column;
-            dt {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px;
+            dt {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px; font-weight: bold;
               @media (min-width: ($elseSP)) {
                 font-size: 2.4rem; 
               }
