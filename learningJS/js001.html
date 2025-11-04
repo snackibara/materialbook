@@ -28,14 +28,13 @@
 <script>
 const text = document.querySelector('#colorText');
 const color = document.querySelector('#colorPicker');
-const changes = document.querySelector('.changes');
+const changes = document.querySelector('.changes'); // ← ここを追加！
 
 // カラーピッカー操作時の動き
 const colorBg = () => {
-  const selectedColor = color.value; // ピッカーで拾った結果を定数に
-  changes.style.backgroundColor = selectedColor; // 指定の要素の背景色に反映させる
+  const selectedColor = color.value;
+  changes.style.backgroundColor = selectedColor; // ← 背景変更先を picker に
 
-  //テキストの変更と文字色変更
   if (selectedColor === '#ffffff') {
     text.textContent = `カラーコード: ${selectedColor} (white)`;
     text.style.color = '#333333';
