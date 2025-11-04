@@ -6,18 +6,18 @@
 <!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
 <base href="">
 -->
-
-<title>Material Book | 疑似クラス:has()について考える</title>
+    
+<title>Material Book | サイト内整理</title>
 <!-- ドキュメントの簡単な説明 -->
-<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある)  -->
-<meta name="description" content="ページの説明">
-<meta name="keuwords" content="ページの関連キーワード">
-
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
+<meta name="description" content="CSSで好きな記述について書きなぐる">
+<meta name="keuwords" content="CSS">
+    
 <!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
 <meta name="google" content="notranslate">
 <!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
 <meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
-
+    
 <!-- SMS系
 <meta property="fb:app_id" content="FBから割り振られるID">
 <meta property="og:url" content="ページのURL">
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="サイト名">
 <meta property="og:locale:alternate" content="ja_JP">　// 設定しなくてもOK 
 <meta property="article:author" content=""> // 記事に対しての詳細な設定。無くても問題ない。
-
+    
 //twitter (X)カード
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@アカウント名">
@@ -40,7 +40,6 @@
 <meta name="twitter:image" content="サムネ画像のalt">　//設定無くても問題ないししない方がページ毎に画像が入るのでは？
 <meta name="twitter:image:alt" content="サムネ画像のalt">　//サムネを設定するなら必要
 -->
-
 
 <!--link rel="stylesheet" href="css/reset.css"-->
 <link rel="stylesheet" href="../css/reset.css">
@@ -67,7 +66,7 @@
 </head>
 <body>
 <header>
-  <div class="logo"><a href="../index.html">Material Book</a></div>
+  <div class="logo"><a href="/">Material Book</a></div>
   
   <!--menu start-->
   <div class="hamburger-menu">
@@ -90,165 +89,46 @@
   
 </header>
 <main>
-  <style>
-  html, body {
-    block-size: 100%;
-  }
-  
-  .scroll-layout {
-    display: grid;
-    grid-template-areas: 
-      "left scroll right"
-      ". markers .";
-    
-    grid-template-areas: 
-      "scroll scroll scroll"
-      "left markers right";
-    
-    grid-template-columns: auto 1fr auto;
-    margin: 2rem 0;
-  }
-
-   .scroll-layout .carousel {
-      grid-area: scroll;
-    }
-  
-  .carousel {
-    max-inline-size: 100cqi;
-    overscroll-behavior-x: contain;
-    scroll-behavior: smooth;
-  }
-
-  .content {
-    display: grid;
-    grid: 50vmin / auto-flow 50vmin;
-    gap: 15px;
-    padding: 0;
-    margin: 0;
-  }
-
-    .content li {
-      list-style-type: none;
-      border: 3px solid #888;
-    }
-  
-
-.carousel {
-  /*overflow-x: auto;  スクロールを非表示にしたい*/
-  overflow-x: hidden;
-  scroll-snap-type: x mandatory;
-}
-  
-  .carousel li {
-    scroll-snap-align: center;
-  }
-
-/* scroll button */
-  .carousel::scroll-button(*) {
-    inline-size: 48px;
-    aspect-ratio: 1;
-    border-radius: 1e3px;
-    border: 2px solid #6ab0ee;
-    margin: 5px;
-  }
-  
-  .carousel::scroll-button(*):focus-visible {
-    outline-offset: 5px;
-  }
-  
-  .carousel::scroll-button(*):not(:disabled):is(:hover, :active) {
-    background-color: Canvas;
-  }
-  
-  .carousel::scroll-button(*):not(:disabled):active {
-    scale: 90%;
-  }
-  
-  .carousel::scroll-button(left) {
-    content: "⬅" / "Scroll Left";
-    grid-area: left;
-    color: #6ab0ee;
-  }
-  
-  .carousel::scroll-button(right) {
-    content: "⮕" / "Scroll Right";
-    grid-area: right;
-    color: #6ab0ee;
-  }
-
-
-/* scroll markers */
-.carousel {
-  scroll-marker-group: after;
-}
-  .carousel::scroll-marker-group {
-    grid-area: markers;
-    display: grid;
-    place-content: safe center;
-    grid: 30px / auto-flow 30px;
-    gap: 15px;
-    padding: 15px;
-    scroll-padding: 15px;
-    overflow: auto;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
-    scroll-snap-type: x mandatory;
-    
-    @media (prefers-reduced-motion: no-preference) {
-      scroll-behavior: smooth;
-    }
-  }
-
-  /*.carousel > .content > li {*/
-    .carousel > .content > li::scroll-marker {
-      content: " ";
-      border: 1px solid #bbb;
-      border-radius: 50%;
-      outline-offset: 4px;
-      -webkit-tap-highlight-color: transparent;
-      scroll-snap-align: center;
-    }
-    
-    .carousel > .content > li::scroll-marker:is(:hover, :focus-visible) {
-      border-color: #85b6e1;
-    }
-    
-    .carousel > .content > li::scroll-marker:target-current {
-      background: #85b6e1;
-      border-color: #85b6e1;
-    }
-  /*}*/
-
-  </style>
-
-
-<div class="scroll-layout">
-  <div class="carousel">
-    <ul class="content">
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-      <li>6</li>
-      <li>7</li>
-      <li>8</li>
-      <li>9</li>
-      <li>10</li>
-    </ul>
-  </div>
-</div>
-
+<style>
+  pre {padding: 1rem; background-color: #d6e9fa;}
+</style>
 <div class="contents">
 <section class="article">
-  <h1 class="mb20">CSSでカルーセルパネルを作れる！？</h1>
-  <p class="mb10">あーいよいよCSSでこれ作れるようになったで！ということで作ってみた。<br>
-  けどやっぱり自動でも動いて欲しいしループもしたい。と考えるとJS使う方がいいと思う。</p>
-  <p class="mb20"></p>
+  <h1 class="mb20">サイト内整理</h1>
+  <p class="mb10">少しこのプロジェクトの整理を行いました。<br>
+    JSの学習を試したりしてたらカテゴリとして1つできるなーとメニューを整理したらメニューの詳細みたいなものを置きたくなったり、色々整理していくうちにエンドレスになるのが目に見えるので一旦ここまで。</p>
+  <p class="mb20">忘備録でもあるので何をしたか等を残しておきます。</p>
+  <h2 class="mb20">メニューの整理</h2>
+  <p class="mb20">JS学習をカテゴリ化したのでメニューを整理した。<br>
+    それに合わせてトップのカルーセルパネルの画像も少し変更。</p>
+  <h2 class="mb20">Aboutページに追記</h2>
+  <p class="mb10">カテゴリが増えてメニューを整理したので、Aboutページにメニューの説明を追加した。</p>
+  <p class="mb20">ついdlをinline-blockで並べたけど、これって今どきならflexとか使うよね、これは追々直したい。</p>
+  <h2 class="mb20">Learnngを追加</h2>
+  <p class="mb10">JavaScriptの学習を改めてするにあたり、結局htmlファイルができるのであればこれを追加してしまえという事でカテゴリに追加した。</p>
+  <p class="mb20">これで満足してはいけない（戒め）。</p>
+  <h2 class="mb20">この先は…</h2>
+  <p class="mb10">Aboutページのdlをflexもしくはgrid化する。好みなのはflex。</p>
+  <p class="mb10">カテゴリが混在するListページやトップのカード部分にカテゴリ別のラベリング。</p>
+  <p class="mb10">そしてソースのインデントについても考える必要はあると思ってたりもする。</p>
+  <p class="mb10">ファイルが重くなるからとインデント無しでコーディングしましょうという時期があり、そのクセを抜いた方がいいよねきっと。<br>
+  今となってはscssで書いてコンパイルしちゃうわけだから、それはら色々探しやすい方がいいよね。と思いつつも「でも修正する時って検索機能とかデベロッパーツールが行数まで教えてくれたりもすすよね」とも思っている。</p>
+  <p class="mb20">htmlに関してはjsやら他の言語が加わることを考えたら、インデントは有りで書いた方が良いわけで…。これは気をつけなければ案件だと思っていますはい。</p>
+  <p class="mb20">更に最初は「至ってシンプルに」と思ってこれ作ってたけど、色少なすぎない？とも思っていたりもする。</p>
 
 
+
+
+
+
+
+
+  
+  
+</div>
 
 </section>
+
 
 </div><!--/contents-->
 </main>
@@ -256,7 +136,7 @@
     <ul>
         <li><a href="/">ホーム</a>&nbsp;&gt;</li>
         <li><a href="index.html">Article</a>&nbsp;&gt;</li>
-        <li>CSSでカルーセルパネルを作れる！？</li>
+        <li>CSSで好きな記述</li>
     </ul>
     <p>&copy;スナックいばら</p>
 </footer>

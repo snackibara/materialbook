@@ -1,9 +1,15 @@
 
 /*-----about*/
+$color-dt:#9e4eed;
 .about {
     @media screen and (min-width: 767px) {
     padding: 20px;
 }
 li {list-style-type: disc;list-style-position: inside;}
+
+/*aboutの定義リスト*/
+dl { margin-left: 1.5rem; display: flex; flex-wrap: wrap;
+  dt {display: inline-block; width: 9rem; margin-bottom: 5px; border-bottom: 1px dotted #333; padding-left: .5rem; /*color:$color-dt;*/}
+  dd {display: inline-block; width: calc(100% - 10rem); margin-bottom: 5px; border-bottom: 1px dotted #333; margin-left: 1px; padding: 0 .5rem;}
 }
-  
+}

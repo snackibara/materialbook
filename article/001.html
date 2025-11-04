@@ -67,7 +67,7 @@
 </head>
 <body>
 <header>
-  <div class="logo"><a href="../index.html">Material Book</a></div>
+  <div class="logo"><a href="/">Material Book</a></div>
   
   <!--menu start-->
   <div class="hamburger-menu">
@@ -78,9 +78,10 @@
   <!--menu inner-->
   <div class="menu-content">
   <ul>
-  <li><a href="../list/index.html">List</a></li>
-  <li><a href="#">Article</a></li>
-  <li><a href="#">About</a></li>
+    <li><a href="../list/index.html">List</a></li>
+    <li><a href="index.html">Article</a></li>
+    <li><a href="../learningJS/index.html">Learning</a></li>
+    <li><a href="../about/index.html">About</a></li>
   </ul>
   </div>
   <!--/menu inner end-->
@@ -92,7 +93,7 @@
 
 
 <div class="contents">
-<section>
+<section class="article">
   <h1 class="mb20">コンテナクエリについて考える</h1>
   <p class="mb10">慣れというのは絶対にあると思うんだけど「アテクシまだまだメディアクエリの方が楽！」というのが正直なところ。<br>
   というのも下のrecommendをコンテナクエエリで設定したものの、幅の変更後のカード幅の設定で!Importantを付けないと元の設定幅のままになってしまったからで、メディアクエリではこれ使わない。なんで？<br>まだまだ勉強が必要だ。</p>
@@ -126,10 +127,8 @@ ul.cards li a dl dd dl dd {width:100%;padding: 0;display: -webkit-box;
 </style>
 
 
-</section>
 
-<section class="recommends">
-<h2 class="mb20">recommends</h2>
+<h2 class="mb20">sample</h2>
 <ul class="cards">
 <li>
   <a href="#" name="">
@@ -216,7 +215,12 @@ ul.cards li a dl dd dl dd {width:100%;padding: 0;display: -webkit-box;
 </div><!--/contents-->
 </main>
 <footer>
- <p>&copy;スナックいばら</p>
+    <ul>
+        <li><a href="/">ホーム</a>&nbsp;&gt;</li>
+        <li><a href="index.html">Article</a>&nbsp;&gt;</li>
+        <li>コンテナクエリについて考える</li>
+    </ul>
+    <p>&copy;スナックいばら</p>
 </footer>
 
 </body>

@@ -81,7 +81,8 @@
 <div class="menu-content">
 <ul>
 <li><a href="list/index.html">List</a></li>
-<li><a href="#">Article</a></li>
+<li><a href="article/index.html">Article</a></li>
+<li><a href="learningJS/index.html">Learning</a></li>
 <li><a href="about/index.html">About</a></li>
 </ul>
 </div>
@@ -91,34 +92,23 @@
 
 </header>
 <main>
-<style>
-/*バナーサイズ640x400として設定*/
-.swiper-slide {max-width: 640px; height: 400px; overflow:hidden;}
-.swiper-slide a img {width: 100%; height: auto;}
-ul.swiper-wrapper {padding: 0;}
-.swiper-pagination {margin-top: 10px;}
-@media screen and (max-width: 640px) {
-.swiper-slide {width: 100%; height: auto; max-height:400px; overflow:hidden;aspect-ratio: 8 / 5;}
-.swiper-slide a img {width: 100%; height: auto;}
-}
-</style>
 
 <div class="swiper">
 <ul class="swiper-wrapper">
 <li class="swiper-slide">
-<a href="#"><img src="images/IMG_6780.jpg" width="640" height="400" alt=""></a>
+<a href="article/index.html"><img src="images/article.png" width="640" height="400" alt=""></a>
 </li>
 <li class="swiper-slide">
-<a href="#"><img src="images/IMG_6824.jpg" width="640" height="400" alt=""></a>
+<a href="learningJS/index.html"><img src="images/learning.png" width="640" height="400" alt=""></a>
 </li>
 <li class="swiper-slide">
-<a href="#"><img src="images/IMG_6840.jpg" width="640" height="400" alt=""></a>
+<a href="about/index.html"><img src="images/IMG_6840.jpg" width="640" height="400" alt=""></a>
 </li>
 <li class="swiper-slide">
-<a href="#"><img src="images/IMG_6841.jpg" width="640" height="400" alt=""></a>
+<a href="about/index.html"><img src="images/IMG_6841.jpg" width="640" height="400" alt=""></a>
 </li>
 <li class="swiper-slide">
-<a href="#"><img src="images/IMG_6842.jpg" width="640" height="400" alt=""></a>
+<a href="about/index.html"><img src="images/IMG_6842.jpg" width="640" height="400" alt=""></a>
 </li>
 </ul><!-- /swiper-wrapper -->
 <div class="swiper-button-prev"></div>
@@ -127,55 +117,35 @@ ul.swiper-wrapper {padding: 0;}
 </div><!-- /swiper -->
 
 <div class="contents">
-<!--section class="recommends">
-<h2 class="name_cate mb20">recommends</h2>
-<ul class="cards_h">
-<li>
-<a href="#" name="">
-<dl>
-<dt><img src="images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-<dl>
-<dt>おすすめ1タイトル</dt>
-<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-</dl>
-</dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="#" name="">
-<dl>
-<dt><img src="images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-  <dl>
-  <dt>おすすめ2タイトル</dt>
-  <dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-  </dl>
-  </dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="#" name="">
-<dl>
-<dt><img src="images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-  <dl>
-  <dt>おすすめ3タイトル</dt>
-  <dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-  </dl>
-  </dd>
-</dl>
-</a>
-</li>
-</ul>
-<div class="box_txtR"><a href="#" class="txtlnk">&gt;&gt;&nbsp;もっと見る</a></div>
-</section--><!--/recommends-->
-
 <section class="recommends">
 <h2 class="name_cate mb20">recommends</h2>
 <ul class="cards_v">
+<li>
+  <a href="article/002.html" name="">
+  <dl>
+  <dt><img src="images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
+  <dd>
+    <dl>
+    <dt>ローディング中の画面を作ってみる</dt>
+    <dd>ローディング画面を作ってみるやつもやってみた。これって最初の読み込みのみに有効なのかな？</dd>
+    </dl>
+    </dd>
+  </dl>
+  </a>
+  </li>
+  <li>
+  <a href="learningJS/js001.html" name="">
+  <dl>
+  <dt><img src="images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
+  <dd>
+    <dl>
+    <dt>カラーピッカーを作ってみる</dt>
+    <dd>本屋でWebクリエイターボックスのManaさん著『1冊ですべて身につくJavaScript入門講座』を見かけて、改めてJS学習しようと思い、まずは最初のカラーピッカー作成してみた。</dd>
+    </dl>
+    </dd>
+  </dl>
+  </a>
+  </li>
       <li>
     <a href="article/006.html" name="">
     <dl>
@@ -228,35 +198,8 @@ ul.swiper-wrapper {padding: 0;}
   </dl>
   </a>
   </li>
-<li>
-  <a href="article/002.html" name="">
-  <dl>
-  <dt><img src="images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
-  <dd>
-    <dl>
-    <dt>スタイルクエリについて考える</dt>
-    <dd>コンテナクエエリと併用してスタイルクエリを使ってみる。<br>
-      確かにこれは動的な箇所と組み合わせるとヒジョーに便利。な気がする。Nweが付く付かないとかカテゴリ毎に色を変えられるとか。手を広げすぎずという判断も重要だけど。</dd>
-    </dl>
-    </dd>
-  </dl>
-  </a>
-  </li>
-  <li>
-  <a href="article/001.html" name="">
-  <dl>
-  <dt><img src="images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
-  <dd>
-    <dl>
-    <dt>コンテナクエリについて考える</dt>
-    <dd>慣れというのは絶対にあると思うんだけど「アテクシまだまだメディアクエリの方が楽！」というのが正直なところ。</dd>
-    </dl>
-    </dd>
-  </dl>
-  </a>
-  </li>
   </ul>
-  <div class="box_btn"><a href="#" class="btn_more">&gt;&gt;&nbsp;もっと見る</a></div>
+  <div class="box_btn"><a href="list/index.html" class="btn_more">&gt;&gt;&nbsp;もっと見る</a></div>
   </section><!--/recommends-->
 
 </div><!--/contents-->

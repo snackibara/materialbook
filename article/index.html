@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<base href="">
 <!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
 <base href="">
 -->
-
+    
 <title>Material Book</title>
 <!-- ドキュメントの簡単な説明 -->
-<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
-<meta name="description" content="現段階でのポートフォリオ的なものであり忘備録的なものであり予習・復習のためのものの記事一覧">
-
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある)  -->
+<meta name="description" content="ページの説明">
+<meta name="keuwords" content="ページの関連キーワード">
+    
 <!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
 <meta name="google" content="notranslate">
 <!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
 <meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
-
+    
 <!-- SMS系
 <meta property="fb:app_id" content="FBから割り振られるID">
 <meta property="og:url" content="ページのURL">
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="サイト名">
 <meta property="og:locale:alternate" content="ja_JP">　// 設定しなくてもOK 
 <meta property="article:author" content=""> // 記事に対しての詳細な設定。無くても問題ない。
-
+    
 //twitter (X)カード
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@アカウント名">
@@ -40,33 +40,34 @@
 <meta name="twitter:image" content="サムネ画像のalt">　//設定無くても問題ないししない方がページ毎に画像が入るのでは？
 <meta name="twitter:image:alt" content="サムネ画像のalt">　//サムネを設定するなら必要
 -->
-
+    
+    
 <!--link rel="stylesheet" href="css/reset.css"-->
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.min.css">
 <!--script>
-  //スマホのページ内リンク用 *一旦コメントアウト
-  //$(function () {
-  //  let headH = $("header").outerHeight(); //ヘッダーの高さを取得
-  //  let animeSpeed = 500; //アニメーションスピード
-  //  $("a[href^='#']").on({
-  //      "click": function () {
-  //          let href = $(this).attr("href");
-  //          let target = $(href == "#" || href === "" ? "html" : href);
-  //          let position;
-  //          position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
-  //          $("body,html").stop().animate({
-  //              scrollTop: position
-  //          }, animeSpeed);
-  //          return false;
-  //      }
-  //  });
+//スマホのページ内リンク用 *一旦コメントアウト
+//$(function () {
+//  let headH = $("header").outerHeight(); //ヘッダーの高さを取得
+//  let animeSpeed = 500; //アニメーションスピード
+//  $("a[href^='#']").on({
+//      "click": function () {
+//          let href = $(this).attr("href");
+//          let target = $(href == "#" || href === "" ? "html" : href);
+//          let position;
+//          position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
+//          $("body,html").stop().animate({
+//              scrollTop: position
+//          }, animeSpeed);
+//          return false;
+//      }
+//  });
 //});
 </script-->
 </head>
 <body>
 <header>
-  <div class="logo"><a href="../index.html">Material Book</a></div>
+<div class="logo"><a href="../index.html">Material Book</a></div>
 
 <!--menu start-->
 <div class="hamburger-menu">
@@ -77,8 +78,8 @@
 <!--menu inner-->
 <div class="menu-content">
 <ul>
-<li><a href="index.html">List</a></li>
-<li><a href="../article/index.html">Article</a></li>
+<li><a href="../list/index.html">List</a></li>
+<li><a href="index.html">Article</a></li>
 <li><a href="../learningJS/index.html">Learning</a></li>
 <li><a href="../about/index.html">About</a></li>
 </ul>
@@ -92,37 +93,18 @@
 
 
 <div class="contents">
+<section class="article">
+<h1 class="mb20">Article</h1>
+<p>ほとんどCSS関連で試したいことを取り敢えずやってみる場です。</p>
+<p>なので各ページ用のCSSはhtmlファイル内に書いてます。</p>
+<p>たまに思ったことも書きます。</p>
+
+</section><!--/about-->
+
 <section class="list">
-<h1 class="mb20">ページ一覧（検索結果）</h1>
-<ul class="lst_content">
+<ul class="cards_v">
 <li>
-<a href="#" name="">
-<dl>
-<dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-<dl>
-<dt>ローディング中の画面を作ってみる</dt>
-<dd>ローディング画面を作ってみるやつもやってみた。これって最初の読み込みのみに有効なのかな？</dd>
-</dl>
-</dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="../learningJS/js001.html" name="">
-<dl>
-<dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-<dl>
-<dt>カラーピッカーを作ってみる</dt>
-<dd>本屋でWebクリエイターボックスのManaさん著『1冊ですべて身につくJavaScript入門講座』を見かけて、改めてJS学習しようと思い、まずは最初のカラーピッカー作成してみた。</dd>
-</dl>
-</dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="../article/006.html" name="">
+<a href="006.html" name="">
 <dl>
 <dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
 <dd>
@@ -135,7 +117,7 @@
 </a>
 </li>
 <li>
-<a href="../article/005.html" name="">
+<a href="005.html" name="">
 <dl>
 <dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
 <dd>
@@ -148,7 +130,7 @@
 </a>
 </li>
 <li>
-<a href="../article/004.html" name="">
+<a href="004.html" name="">
 <dl>
 <dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
 <dd>
@@ -161,7 +143,7 @@
 </a>
 </li>
 <li>
-<a href="../article/003.html" name="">
+<a href="003.html" name="">
 <dl>
 <dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
 <dd>
@@ -174,7 +156,7 @@
 </a>
 </li>
 <li>
-<a href="../article/002.html" name="">
+<a href="002.html" name="">
 <dl>
 <dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
 <dd>
@@ -187,7 +169,7 @@
 </a>
 </li>
 <li>
-<a href="../article/001.html" name="">
+<a href="001.html" name="">
 <dl>
 <dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
 <dd>
@@ -199,67 +181,17 @@
 </dl>
 </a>
 </li>
-<!--li>
-<a href="#" name="">
-<dl>
-<dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-<dl>
-<dt>おすすめ3タイトル</dt>
-<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-</dl>
-</dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="#" name="">
-<dl>
-<dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-<dl>
-<dt>おすすめ1タイトル</dt>
-<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-</dl>
-</dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="#" name="">
-<dl>
-<dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-<dl>
-<dt>おすすめ2タイトル</dt>
-<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-</dl>
-</dd>
-</dl>
-</a>
-</li>
-<li>
-<a href="#" name="">
-<dl>
-<dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-<dl>
-<dt>おすすめ3タイトル</dt>
-<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-</dl>
-</dd>
-</dl>
-</a>
-</li-->
-</ul>
-<!--div class="box_txtR"><a href="#" class="txtlnk">&gt;&gt;&nbsp;もっと見る</a></div-->
-</section><!--/recommends-->
-
+  <!--div class="box_btn"><a href="#" class="btn_more">&gt;&gt;&nbsp;もっと見る</a></div-->
+  </section><!--/recommends-->
 
 </div><!--/contents-->
 </main>
 <footer>
- <p>&copy;スナックいばら</p>
+    <ul>
+        <li><a href="/">ホーム</a>&nbsp;&gt;</li>
+        <li>Article</li>
+    </ul>
+    <p>&copy;スナックいばら</p>
 </footer>
 
 </body>

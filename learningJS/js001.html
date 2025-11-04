@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="">
+<!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
+<base href="">
+-->
+
+<title>カラーピッカーを作ってみる</title>
+<!-- ドキュメントの簡単な説明 -->
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
+<meta name="description" content="JSを使ってカラーピッカーを作ってみるやつです">
+
+<!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
+<meta name="google" content="notranslate">
+<!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
+<meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
+
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+
+</head>
+<body>
+<!--JSの学習用のディレクトリなので、cssとjsはとりあえず<body>の中に書くよ-->
+<script>
+const text = document.querySelector('#colorText');
+const color = document.querySelector('#colorPicker');
+const changes = document.querySelector('.changes');
+
+// カラーピッカー操作時の動き
+const colorBg = () => {
+  const selectedColor = color.value; // ピッカーで拾った結果を定数に
+  changes.style.backgroundColor = selectedColor; // 指定の要素の背景色に反映させる
+
+  //テキストの変更と文字色変更
+  if (selectedColor === '#ffffff') {
+    text.textContent = `カラーコード: ${selectedColor} (white)`;
+    text.style.color = '#333333';
+  } else if (selectedColor === '#000000') {
+    text.textContent = `カラーコード: ${selectedColor} (black)`;
+    text.style.color = '#ffffff';
+  } else {
+    text.textContent = `カラーコード: ${selectedColor}`;
+    text.style.color = selectedColor;
+  }
+};
+
+// カラーピッカーが変更されたら colorBg を発動
+color.addEventListener('input', colorBg);
+</script>
+<style>
+    main {
+        background: #fff;
+    }
+    .change {
+        padding:1rem;
+        width: 70%;
+        margin:0 auto 20px;
+        border-top:4px dotted #999;
+        border-bottom:4px dotted #999;
+    }
+    .picker {
+        background: #fff;
+        padding: 2rem;
+        border-radius: .5rem;
+        box-shadow: 0 0 .4rem rgba(0, 0, 0, .5);
+        width: 40%;
+        margin: 2rem 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .picker p {margin: 0 auto 1rem auto;}
+    .picker input {all: revert; margin: 0 auto;}
+    @media (max-width: 768px) {
+        .change {width: 100%;}
+        .picker {
+            width: 80%;
+            margin: 1.4rem auto;
+        }
+    }
+</style>
+<header>
+  <div class="logo"><a href="../index.html">Material Book</a></div>
+  
+  <!--menu start-->
+  <div class="hamburger-menu">
+  <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+  <input type="checkbox" id="menu-btn-check">
+  <!--  ハンバーガーボタン -->
+  <label for="menu-btn-check" class="menu-btn"><span></span></label>
+  <!--menu inner-->
+  <div class="menu-content">
+  <ul>
+    <li><a href="../list/index.html">List</a></li>
+    <li><a href="../article/index.html">Article</a></li>
+    <li><a href="index.html">Learning</a></li>
+    <li><a href="../about/index.html">About</a></li>
+</ul>
+  </div>
+  <!--/menu inner end-->
+  </div>
+  <!--/menu end-->
+  
+</header>
+<main>
+    <div class="contents">
+        <section class="article">
+            <h1 class="mb20">カラーピッカーを作ってみる</h1>
+            <p class="mb15">本屋でWebクリエイターボックスのManaさん著『1冊ですべて身につくJavaScript入門講座』を見かけて、改めてJS学習しようと思い、まずは最初のカラーピッカー作成してみた。</p>
+            
+            <div class="change">
+            <p>ここでjs展開します。</p>
+            <div class="picker">
+                <p id="colorText">カラーコードを検索</p>
+                <input id="colorPicker" type="color">
+            </div>
+            </div>
+            <p class="mb15">書いてあるまんまなのもあれなんで、ピッカーで拾った色を背景の他にカラーコードのテキストの色も変える記述を足してみた。<br>
+            更に「全体の背景色が変わるのもちょっと嫌かも」となり、ちょっとAIさんに相談。ピッカーで拾った結果を反映させる記述を一つにまとめたら良いのではと提案された結果がこれ。</p>
+            <P class="mb15">確かに結果が同じなので「結果を背景色に反映してね」「結果をテキストに反映してね」と書くより、結果をselectedColorとしてそれぞれに割り当てる方がスッキリした気がする。</P>
+       
+        </section>
+    </div>
+</main>
+<footer>
+    <ul>
+        <li><a href="/">ホーム</a>&nbsp;&gt;</li>
+        <li><a href="index.html">learningJS</a>&nbsp;&gt;</li>
+        <li>カラーピッカーを作ってみる</li>
+    </ul>
+    <p>&copy;スナックいばら</p>
+</footer>
+</body>
+
+</html>

@@ -117,6 +117,9 @@
   }
 }
 /*-----about*/
+.about {
+  /*aboutの定義リスト*/
+}
 @media screen and (min-width: 767px) {
   .about {
     padding: 20px;
@@ -125,6 +128,26 @@
 .about li {
   list-style-type: disc;
   list-style-position: inside;
+}
+.about dl {
+  margin-left: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.about dl dt {
+  display: inline-block;
+  width: 9rem;
+  margin-bottom: 5px;
+  border-bottom: 1px dotted #333;
+  padding-left: 0.5rem; /*color:$color-dt;*/
+}
+.about dl dd {
+  display: inline-block;
+  width: calc(100% - 10rem);
+  margin-bottom: 5px;
+  border-bottom: 1px dotted #333;
+  margin-left: 1px;
+  padding: 0 0.5rem;
 }
 
 .mt5 {
@@ -613,7 +636,7 @@ h2.name_cate::after {
 footer {
   background-color: #85b6e1;
   color: #fff;
-  padding: 20px;
+  padding: 0 0 20px 0;
   width: 100%;
   position: sticky;
   top: 100vh;
@@ -621,6 +644,30 @@ footer {
 footer p {
   text-align: center;
   font-size: 1.3rem;
+  padding-top: 0;
+}
+@media (min-width: 768px) {
+  footer p {
+    padding-top: 1.5rem;
+  }
+}
+footer ul {
+  display: block;
+  background: #fff;
+  margin: 0 0 10px 0;
+  color: #333;
+  padding: 0 0 5px 5px;
+}
+@media (min-width: 768px) {
+  footer ul {
+    padding: 0 0 10px 20px;
+  }
+}
+footer ul li {
+  display: inline-block;
+}
+footer ul li a {
+  color: #0f69b6;
 }
 
 section {
@@ -873,4 +920,39 @@ ul.lst_content li a {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* 制限したい行数が3の場合 */
   overflow: hidden;
+}
+
+/*カルーセルパネル/バナーサイズ640x400として設定*/
+ul.swiper-wrapper {
+  padding: 0;
+}
+ul.swiper-wrapper .swiper-slide {
+  max-width: 640px;
+  height: 400px;
+  overflow: hidden;
+}
+@media screen and (max-width: 640px) {
+  ul.swiper-wrapper .swiper-slide {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    overflow: hidden;
+    aspect-ratio: 8/5;
+  }
+}
+ul.swiper-wrapper .swiper-slide a img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 640px) {
+  ul.swiper-wrapper .swiper-slide a img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.swiper-pagination {
+  margin-top: 10px;
 }/*# sourceMappingURL=style.css.map */

@@ -12,4 +12,3 @@
   <a href="https://github.com/snackibara/nextjs-tutorial">https://github.com/snackibara/nextjs-tutorial</a><br>
   <a href="https://nextjs-tutorial-9ndc.vercel.app/">https://nextjs-tutorial-9ndc.vercel.app/</a>
 </p>
-<p class="mb40">追記：Google アナリティクス認定資格に合格しました。</p>

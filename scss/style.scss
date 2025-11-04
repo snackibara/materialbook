@@ -7,6 +7,8 @@ $txt-color: #333;
 $txt-white:#fff;
 $color-2nd:#85b6e1;
 $color-3rd:#ccc;
+$color-link:#0f69b6;
+$color-highlight:#f6eb9b;
 $elseSP:768px;
 
 @forward 'menu';
@@ -92,8 +94,17 @@ h2 {font-size: 1.8rem; border-left: double 10px $txt-color;padding-left: 10px; f
 }
 /*h3 {font-size: 1.8rem; border-left: dotted 5px $color-2nd;padding-left: 10px;}*/
 .highlight {background-color: #f6eb9b;padding: 2px 5px; font-size: 1.6rem;}
-footer {background-color: $color-2nd; color:$txt-white; padding: 20px;width: 100%; position: sticky;top: 100vh;
-  p{text-align: center; font-size: 1.3rem;}
+footer {background-color: $color-2nd; color:$txt-white; padding: 0 0 20px 0;width: 100%; position: sticky;top: 100vh;
+  p{text-align: center; font-size: 1.3rem; padding-top: 0;
+  @media (min-width: ($elseSP)) {padding-top: 1.5rem;}
+  }
+  ul {display: block; background:$txt-white;margin: 0 0 10px 0; color: $txt-color; padding:0 0 5px 5px;
+    @media (min-width: ($elseSP)) { padding: 0 0 10px 20px;}
+    li {display: inline-block;
+      a {color:$color-link;}
+
+  }
+}
 }
 section {margin-bottom: 20px;
   @media (min-width: ($elseSP)) {
@@ -211,5 +222,24 @@ ul.lst_content { display: block;
             }
           }
         }
+
+/*カルーセルパネル/バナーサイズ640x400として設定*/
+ul.swiper-wrapper {padding: 0;
+  .swiper-slide {max-width: 640px; height: 400px; overflow:hidden;
+    @media screen and (max-width: 640px) {
+      width: 100%; height: auto; max-height:400px; overflow:hidden;aspect-ratio: 8 / 5;
+    }
+    a {
+      img {width: 100%; height: auto; object-fit: cover;
+        @media screen and (max-width: 640px) {
+          width: 100%; height: auto;
+        }
+      }
+    }
+  }
+}
+.swiper-pagination {margin-top: 10px;}
+
+ 
 
 

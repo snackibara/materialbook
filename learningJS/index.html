@@ -6,18 +6,18 @@
 <!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
 <base href="">
 -->
-
-<title>Material Book | CSSで画像にハーフトーン加工する</title>
+    
+<title>Material Book</title>
 <!-- ドキュメントの簡単な説明 -->
 <!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある)  -->
 <meta name="description" content="ページの説明">
 <meta name="keuwords" content="ページの関連キーワード">
-
+    
 <!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
 <meta name="google" content="notranslate">
 <!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
 <meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
-
+    
 <!-- SMS系
 <meta property="fb:app_id" content="FBから割り振られるID">
 <meta property="og:url" content="ページのURL">
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="サイト名">
 <meta property="og:locale:alternate" content="ja_JP">　// 設定しなくてもOK 
 <meta property="article:author" content=""> // 記事に対しての詳細な設定。無くても問題ない。
-
+    
 //twitter (X)カード
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@アカウント名">
@@ -40,8 +40,8 @@
 <meta name="twitter:image" content="サムネ画像のalt">　//設定無くても問題ないししない方がページ毎に画像が入るのでは？
 <meta name="twitter:image:alt" content="サムネ画像のalt">　//サムネを設定するなら必要
 -->
-
-
+    
+    
 <!--link rel="stylesheet" href="css/reset.css"-->
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.min.css">
@@ -51,102 +51,92 @@
 //  let headH = $("header").outerHeight(); //ヘッダーの高さを取得
 //  let animeSpeed = 500; //アニメーションスピード
 //  $("a[href^='#']").on({
-//  "click": function () {
-//  let href = $(this).attr("href");
-//  let target = $(href == "#" || href === "" ? "html" : href);
-//  let position;
-//  position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
-//  $("body,html").stop().animate({
-//  scrollTop: position
-//  }, animeSpeed);
-//  return false;
-//  }
+//      "click": function () {
+//          let href = $(this).attr("href");
+//          let target = $(href == "#" || href === "" ? "html" : href);
+//          let position;
+//          position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
+//          $("body,html").stop().animate({
+//              scrollTop: position
+//          }, animeSpeed);
+//          return false;
+//      }
 //  });
 //});
 </script-->
 </head>
 <body>
 <header>
-  <div class="logo"><a href="../index.html">Material Book</a></div>
-  
-  <!--menu start-->
-  <div class="hamburger-menu">
-  <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
-  <input type="checkbox" id="menu-btn-check">
-  <!--  ハンバーガーボタン -->
-  <label for="menu-btn-check" class="menu-btn"><span></span></label>
-  <!--menu inner-->
-  <div class="menu-content">
-  <ul>
-    <li><a href="../list/index.html">List</a></li>
-    <li><a href="index.html">Article</a></li>
-    <li><a href="../learningJS/index.html">Learning</a></li>
-    <li><a href="../about/index.html">About</a></li>
-  </ul>
-  </div>
-  <!--/menu inner end-->
-  </div>
-  <!--/menu end-->
-  
+<div class="logo"><a href="../index.html">Material Book</a></div>
+
+<!--menu start-->
+<div class="hamburger-menu">
+<!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+<input type="checkbox" id="menu-btn-check">
+<!--  ハンバーガーボタン -->
+<label for="menu-btn-check" class="menu-btn"><span></span></label>
+<!--menu inner-->
+<div class="menu-content">
+<ul>
+<li><a href="../list/index.html">List</a></li>
+<li><a href="../article/index.html">Article</a></li>
+<li><a href="index.html">Learning</a></li>
+<li><a href="../about/index.html">About</a></li>
+</ul>
+</div>
+<!--/menu inner end-->
+</div>
+<!--/menu end-->
+
 </header>
 <main>
 
+
 <div class="contents">
 <section class="article">
-  <h1 class="mb20">CSSで画像にハーフトーン加工する</h1>
-  <p class="mb10">多分これを使う事は無いと思うので自分で勝手に試してみるやつ。使いどころは思いつかないけどやってみたいんだもん。</p>
-  <p class="mb20">レスポンシブで画像の高さをpx指定しない場合、疑似要素にinset: 0;の設定を忘れずにー！</p>
-<style>
-  .halftone {
-    position: relative;
-    aspect-ratio: 1 / 1; /* 正方形を保証 */
-  }
-  .halftone::after { /*ハーフトーン*/
-    content: "";
-    display: block;
-    width: 640px;
-    height: 640px;
-    position:absolute;
-    top: 0;
-    /*ハーフトーンの色と透明度*/
-    background-image: radial-gradient(#666 10%, transparent 90%);
-    /*ハーフトーンの背景　この場合ハーフトーンと実際の画像の間に入るレイヤーのイメージ*/
-    background-color: rgba(255, 255, 255, 0.5);
-    background-position: 0 0;
-    /*ハーフトーンのドットのサイズ*/
-    background-size: 8px 8px;
-  }
+<h1 class="mb20">JavaScript</h1>
+<p>JS学習用に色々やってみる場です。めっちゃ基礎。</p>
+<p>jQueryはこれまでも使用してたけど、あれ使うと理解が浅くてもある程度なんとかなっちゃってその弊害を補うべく…。</p>
 
-  @media (max-width: 767px) {
-    .halftone {display: block;
-    width: 100%;}
-    .halftone img {
-      width: 100%;
-      height: auto;
-    }
-    .halftone::after {
-      content: "";
-      width: 100%;
-      height: auto;
-      position:absolute;
-      inset: 0;             /* 親と同じ大きさに広がる */
+</section><!--/about-->
 
-    }
-  }
-  </style>
-  
-  <div class="halftone">
-    <img src="../images/IMG_6780.jpg" alt="ウエストミンスターアビー" />
-  </div>
-</section>
+<section class="list">
+<ul class="cards_v">
+<li>
+<a href="js002.html" name="">
+<dl>
+<dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
+<dd>
+<dl>
+<dt>ローディング中の画面を作ってみる</dt>
+<dd>ローディング画面を作ってみるやつもやってみた。これって最初の読み込みのみに有効なのかな？</dd>
+</dl>
+</dd>
+</dl>
+</a>
+</li>
+<li>
+<a href="js001.html" name="">
+<dl>
+<dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
+<dd>
+<dl>
+<dt>カラーピッカーを作ってみる</dt>
+<dd>本屋でWebクリエイターボックスのManaさん著『1冊ですべて身につくJavaScript入門講座』を見かけて、改めてJS学習しようと思い、まずは最初のカラーピッカー作成してみた。</dd>
+</dl>
+</dd>
+</dl>
+</a>
+</li>
+  <!--div class="box_btn"><a href="#" class="btn_more">&gt;&gt;&nbsp;もっと見る</a></div-->
+  </section><!--/recommends-->
+
 </div><!--/contents-->
 </main>
-
 <footer>
     <ul>
         <li><a href="/">ホーム</a>&nbsp;&gt;</li>
-        <li><a href="index.html">Article</a>&nbsp;&gt;</li>
-        <li>CSSで画像にハーフトーン加工する</li>
+        <li>learningJS</li>
     </ul>
     <p>&copy;スナックいばら</p>
 </footer>

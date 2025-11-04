@@ -66,7 +66,7 @@
 </head>
 <body>
 <header>
-  <div class="logo"><a href="../index.html">Material Book</a></div>
+  <div class="logo"><a href="/">Material Book</a></div>
   
   <!--menu start-->
   <div class="hamburger-menu">
@@ -77,9 +77,10 @@
   <!--menu inner-->
   <div class="menu-content">
   <ul>
-  <li><a href="../list/index.html">List</a></li>
-  <li><a href="#">Article</a></li>
-  <li><a href="#">About</a></li>
+    <li><a href="../list/index.html">List</a></li>
+    <li><a href="index.html">Article</a></li>
+    <li><a href="../learningJS/index.html">Learning</a></li>
+    <li><a href="../about/index.html">About</a></li>
   </ul>
   </div>
   <!--/menu inner end-->
@@ -89,14 +90,14 @@
 </header>
 <main>
 <style>
-  pre {padding: 1rem; background-color: #d6e9fa;}
+  pre {padding: 1rem; background-color: #d6e9fa; margin: 0;}
 </style>
 <div class="contents">
-<section>
+<section class="article">
   <h1 class="mb20">CSSで好きな記述</h1>
   <p class="mb10">本当はカスケードレイヤー<span class="highlight">@layer</span>について考えたかったんだけど、CSSの色々を書いてたら「あーこの記述すき！」というのが頭から離れなくなったので、それについて書き殴ることにする。</p> 
-  <h2>calc((100% - 40px) / 3</h2>
-<pre>
+  <h2 class="mb20">calc((100% - 40px) / 3)</h2>
+<pre class="mb20">
   li {
     width: calc((100% - 40px) / 3);
   }
@@ -109,8 +110,8 @@
 いや、細かく指定があれば指定しますけどね。<br>
 というスタンスでも割と許してもらえるのがこの記述。</p>
 
-<h2>justify-content: space-between;</h2>
-<pre>
+<h2 class="mb20">justify-content: space-between;</h2>
+<pre class="mb20">
   ul {
     display: flex;
     justify-content: space-between;
@@ -123,16 +124,6 @@
 </p>
 <p class="mb20">このあたりのCSSならスマホのブラウザのバージョンを気にせずに使えるところも大きなポイント。<br>
 スマホのブラウザはアプデしててもそれ以前にOSが古いどころか機種が古い人も世の中には沢山いる。そうなると「最新バージョンのブラウザで〜」というのも理解されない場合も多いのでサービスによっては機会損失を増やしかねないけど、この2つはほぼセーフなので安心できる。だから好き。</p>
-
-<p class="mb10">ところでカスケードレイヤー<span class="highlight">@layer</span>を使うとスタイルの優先順位の管理が以前より明確になるということなんだけど、これはルールをしっかり覚えてちゃんと設計して使わないと突貫工事のヒドイやつになりそう。勉強することいっぱいある。</p>
-
-
-
-
-
-
-
-
   
   
 </div>
@@ -143,7 +134,12 @@
 </div><!--/contents-->
 </main>
 <footer>
- <p>&copy;スナックいばら</p>
+    <ul>
+        <li><a href="/">ホーム</a>&nbsp;&gt;</li>
+        <li><a href="index.html">Article</a>&nbsp;&gt;</li>
+        <li>CSSで好きな記述</li>
+    </ul>
+    <p>&copy;スナックいばら</p>
 </footer>
 
 </body>
