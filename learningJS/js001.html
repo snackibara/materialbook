@@ -25,31 +25,7 @@
 </head>
 <body>
 <!--JSの学習用のディレクトリなので、cssとjsはとりあえず<body>の中に書くよ-->
-<script>
-const text = document.querySelector('#colorText');
-const color = document.querySelector('#colorPicker');
-const changes = document.querySelector('.changes'); // ← ここを追加！
 
-// カラーピッカー操作時の動き
-const colorBg = () => {
-  const selectedColor = color.value;
-  changes.style.backgroundColor = selectedColor; // ← 背景変更先を picker に
-
-  if (selectedColor === '#ffffff') {
-    text.textContent = `カラーコード: ${selectedColor} (white)`;
-    text.style.color = '#333333';
-  } else if (selectedColor === '#000000') {
-    text.textContent = `カラーコード: ${selectedColor} (black)`;
-    text.style.color = '#ffffff';
-  } else {
-    text.textContent = `カラーコード: ${selectedColor}`;
-    text.style.color = selectedColor;
-  }
-};
-
-// カラーピッカーが変更されたら colorBg を発動
-color.addEventListener('input', colorBg);
-</script>
 <style>
     main {
         background: #fff;
@@ -133,6 +109,32 @@ color.addEventListener('input', colorBg);
     </ul>
     <p>&copy;スナックいばら</p>
 </footer>
+
+<script>
+const text = document.querySelector('#colorText');
+const color = document.querySelector('#colorPicker');
+const changes = document.querySelector('.changes'); // ← ここを追加！
+
+// カラーピッカー操作時の動き
+const colorBg = () => {
+  const selectedColor = color.value;
+  changes.style.backgroundColor = selectedColor; // ← 背景変更先を picker に
+
+  if (selectedColor === '#ffffff') {
+    text.textContent = `カラーコード: ${selectedColor} (white)`;
+    text.style.color = '#333333';
+  } else if (selectedColor === '#000000') {
+    text.textContent = `カラーコード: ${selectedColor} (black)`;
+    text.style.color = '#ffffff';
+  } else {
+    text.textContent = `カラーコード: ${selectedColor}`;
+    text.style.color = selectedColor;
+  }
+};
+
+// カラーピッカーが変更されたら colorBg を発動
+color.addEventListener('input', colorBg);
+</script>
 </body>
 
 </html>
