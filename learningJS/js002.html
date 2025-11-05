@@ -51,7 +51,7 @@
     .gallery {
         display: grid;
         gap: 10px;
-        grid-template-columns: repeat(auto-fit, minmax(300px,ifr));
+        grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
     }
     img {
         width: 100%;
@@ -86,7 +86,8 @@
 <div id="loading">
     <img src="../images/spinner.png" alt="">
 </div>
-<p>ローディング画面を作ってみるやつもやってみた。これって最初の読み込みのみに有効なのかな。</p>
+<p class="mb10">ローディング画面を作ってみるやつもやってみた。これって最初の読み込みのみに有効なのかな。</p>
+<p class="mb20">追記：ギャラリーまで辿り着いたけど読み込みが速くてローディングが確認できていないYO!</p>
 <!--コンテンツ-->
 <div class="gallery">
     <div class="item">
