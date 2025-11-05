@@ -25,14 +25,6 @@
 </head>
 <body>
 <!--JSの学習用のディレクトリなので、cssとjsはとりあえず<body>の中に書くよ-->
-<script>
-    const loading = document.querySelector('#loading');
-
-    window.addEventListener('load', () => {
-        loading.classList.add('loaded');
-    });
-
-</script>
 <style>
     /* ローディング部分 */
     #loading {
@@ -125,6 +117,14 @@
     <p>&copy;スナックいばら</p>
 </footer>
 
+<script>
+    const loading = document.querySelector('#loading');
+
+    window.addEventListener('load', () => {
+        loading.classList.add('loaded');
+    });
+
+</script>
 </body>
 
 </html>
