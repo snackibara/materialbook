@@ -721,53 +721,53 @@ ul.cards_h li a, ul.cards_v li a {
 }
 
 /*カード横型, リスト*/
-ul.cards_h li a, ul.lst_content li a {
+ul.cards_h li a, ul#lst_all li a {
   padding: 10px;
 }
-ul.cards_h li a:hover, ul.lst_content li a:hover {
+ul.cards_h li a:hover, ul#lst_all li a:hover {
   opacity: 0.8;
 }
 
-ul.cards_h li a dl, ul.lst_content li a dl {
+ul.cards_h li a dl, ul#lst_all li a dl {
   display: flex;
   flex-flow: row;
 }
-ul.cards_h li a dl dt, ul.lst_content li a dl dt {
+ul.cards_h li a dl dt, ul#lst_all li a dl dt {
   width: 30%;
   height: auto;
   aspect-ratio: 1;
   line-height: 0;
 }
-ul.cards_h li a dl dt img, ul.lst_content li a dl dt img {
+ul.cards_h li a dl dt img, ul#lst_all li a dl dt img {
   width: 100%;
   height: auto;
 }
-ul.cards_h li a dl dd, ul.lst_content li a dl dd {
+ul.cards_h li a dl dd, ul#lst_all li a dl dd {
   padding-left: 10px;
   width: 100%;
 }
 @media (min-width: 768px) {
-  ul.cards_h li a dl dd, ul.lst_content li a dl dd {
+  ul.cards_h li a dl dd, ul#lst_all li a dl dd {
     width: 100%;
     padding-left: 20px;
   }
 }
-ul.cards_h li a dl dd dl, ul.lst_content li a dl dd dl {
+ul.cards_h li a dl dd dl, ul#lst_all li a dl dd dl {
   flex-flow: column;
   width: 100%;
 }
-ul.cards_h li a dl dd dl dt, ul.lst_content li a dl dd dl dt {
+ul.cards_h li a dl dd dl dt, ul#lst_all li a dl dd dl dt {
   line-height: 1.4;
   width: 100%;
   aspect-ratio: auto;
   margin-bottom: 5px;
 }
 @media (min-width: 768px) {
-  ul.cards_h li a dl dd dl dt, ul.lst_content li a dl dd dl dt {
+  ul.cards_h li a dl dd dl dt, ul#lst_all li a dl dd dl dt {
     font-size: 2.4rem;
   }
 }
-ul.cards_h li a dl dd dl dd, ul.lst_content li a dl dd dl dd {
+ul.cards_h li a dl dd dl dd, ul#lst_all li a dl dd dl dd {
   width: 100%;
   padding: 0;
   display: -webkit-box;
@@ -854,54 +854,60 @@ ul.cards_v li a dl dd dl dd {
 }
 
 /*リスト*/
-ul.lst_content {
+ul#lst_all {
   display: block;
 }
-ul.lst_content li {
+ul#lst_all li {
   width: 100%;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0 4px 4px 0;
   margin-bottom: 10px;
 }
-ul.lst_content li a {
+ul#lst_all li a {
   display: block;
 }
+ul#lst_all .catA {
+  border-left: 4px solid #713CDB;
+}
+ul#lst_all .catL {
+  border-left: 4px solid #EFBA69;
+}
 @media (min-width: 768px) {
-  ul.lst_content {
+  ul#lst_all {
     display: flex;
     flex-flow: column;
     border: 1px 0;
   }
-  ul.lst_content li {
+  ul#lst_all li {
     margin-bottom: 20px;
   }
 }
 
-.list ul.lst_content li a dl {
+.list ul#lst_all li a dl {
   display: flex;
   flex-flow: row;
 }
-.list ul.lst_content li a dl dt {
+.list ul#lst_all li a dl dt {
   width: 30%;
 }
 @media (min-width: 768px) {
-  .list ul.lst_content li a dl dt {
+  .list ul#lst_all li a dl dt {
     width: 14%;
   }
 }
-.list ul.lst_content li a dl dd {
+.list ul#lst_all li a dl dd {
   padding-left: 10px;
   width: 100%;
 }
 @media (min-width: 768px) {
-  .list ul.lst_content li a dl dd {
+  .list ul#lst_all li a dl dd {
     padding-left: 20px;
   }
 }
-.list ul.lst_content li a dl dd dl {
+.list ul#lst_all li a dl dd dl {
   flex-flow: column;
 }
-.list ul.lst_content li a dl dd dl dt {
+.list ul#lst_all li a dl dd dl dt {
   line-height: 1.4;
   width: 100%;
   aspect-ratio: auto;
@@ -909,17 +915,34 @@ ul.lst_content li a {
   font-weight: bold;
 }
 @media (min-width: 768px) {
-  .list ul.lst_content li a dl dd dl dt {
+  .list ul#lst_all li a dl dd dl dt {
     font-size: 2.4rem;
   }
 }
-.list ul.lst_content li a dl dd dl dd {
+.list ul#lst_all li a dl dd dl dd {
   width: 100%;
   padding: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* 制限したい行数が3の場合 */
   overflow: hidden;
+}
+
+/* リストページのjs用 */
+.hidden {
+  display: none !important;
+}
+
+/* リストページの絞り込みボタン */
+.list .filtering {
+  display: flex;
+  justify-content: end;
+}
+.list .filtering button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
 }
 
 /*カルーセルパネル/バナーサイズ640x400として設定*/

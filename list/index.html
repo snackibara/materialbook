@@ -94,8 +94,13 @@
 <div class="contents">
 <section class="list">
 <h1 class="mb20">ページ一覧（検索結果）</h1>
-<ul class="lst_content">
-<li>
+<div class="mb20 filtering">
+<button onclick="filterItems('catA')">Article</button>
+<button onclick="filterItems('catL')">Learning</button>
+<button onclick="filterItems('all')">すべて</button>
+</div>
+<ul id="lst_all" class="lst_content">
+<li class="catA">
 <a href="../article/007.html" name="">
 <dl>
 <dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
@@ -108,7 +113,7 @@
 </dl>
 </a>
 </li>
-<li>
+<li class="catL">
 <a href="../learningJS/js002.html" name="">
 <dl>
 <dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
@@ -121,7 +126,7 @@
 </dl>
 </a>
 </li>
-<li>
+<li class="catL">
 <a href="../learningJS/js001.html" name="">
 <dl>
 <dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
@@ -134,7 +139,7 @@
 </dl>
 </a>
 </li>
-<li>
+<li class="catA">
 <a href="../article/006.html" name="">
 <dl>
 <dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
@@ -147,7 +152,7 @@
 </dl>
 </a>
 </li>
-<li>
+<li class="catA">
 <a href="../article/005.html" name="">
 <dl>
 <dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
@@ -160,7 +165,7 @@
 </dl>
 </a>
 </li>
-<li>
+<li class="catA">
 <a href="../article/004.html" name="">
 <dl>
 <dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
@@ -173,7 +178,7 @@
 </dl>
 </a>
 </li>
-<li>
+<li class="catA">
 <a href="../article/003.html" name="">
 <dl>
 <dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
@@ -186,7 +191,7 @@
 </dl>
 </a>
 </li>
-<li>
+<li class="catA">
 <a href="../article/002.html" name="">
 <dl>
 <dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
@@ -199,7 +204,7 @@
 </dl>
 </a>
 </li>
-<li>
+<li class="catA">
 <a href="../article/001.html" name="">
 <dl>
 <dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
@@ -259,8 +264,37 @@
 </div><!--/contents-->
 </main>
 <footer>
- <p>&copy;スナックいばら</p>
+    <ul>
+        <li><a href="/">ホーム</a>&nbsp;&gt;</li>
+        <li>List</li>
+    </ul>
+    <p>&copy;スナックいばら</p>
 </footer>
 
+<script>
+// フィルター用　ページが増えたら別にjsファイル作る
+function filterItems(className) {
+    // 全てのリストアイテムを取得する
+    const allItems = document.querySelectorAll('#lst_all li');
+
+    // 一旦全部非表示に
+    allItems.forEach(item => {
+        item.classList.add('hidden');
+    });
+
+    // クラスに基づいて表示するものを選ぶ
+    if (className === 'all') {
+        allItems.forEach(item => {
+            item.classList.remove('hidden');
+        });
+    } else {
+        // querySelectorAllで指定のクラスの要素のみを取得する
+        const specificItems = document.querySelectorAll('#lst_all li.' + className);
+        specificItems.forEach(item => {
+            item.classList.remove('hidden');
+        });
+    }
+}
+</script>
 </body>
 </html>

@@ -10,6 +10,8 @@ $color-3rd:#ccc;
 $color-link:#0f69b6;
 $color-highlight:#f6eb9b;
 $elseSP:768px;
+$color-categoryA :#713CDB;
+$color-categoryL :#EFBA69;
 
 @forward 'menu';
 @forward 'about';
@@ -128,11 +130,11 @@ ul.cards_h, ul.cards_v { display: block;
 }
 
 /*カード横型, リスト*/
-ul.cards_h li a, ul.lst_content li a {padding: 10px;
+ul.cards_h li a, ul#lst_all li a {padding: 10px;
 &:hover {opacity: 0.8;}
 }
 
-ul.cards_h li a dl, ul.lst_content li a dl {display: flex; flex-flow: row;
+ul.cards_h li a dl, ul#lst_all li a dl {display: flex; flex-flow: row;
       dt {width:30%; height: auto; aspect-ratio: 1; line-height: 0;
         img {width: 100%; height: auto;}
       }
@@ -189,16 +191,18 @@ ul.cards_v li {overflow: hidden;
 }
 
 /*リスト*/
-ul.lst_content { display: block;
-  li { width: 100%;border: 1px solid $color-3rd; border-radius: 4px; margin-bottom: 10px;
+ul#lst_all { display: block;
+  li { width: 100%;border: 1px solid $color-3rd; border-radius: 0 4px 4px 0; margin-bottom: 10px;
     a { display: block;}
   }
+  .catA {border-left: 4px solid $color-categoryA;}
+  .catL {border-left: 4px solid $color-categoryL;}
   @media (min-width: ($elseSP)) { 
   display: flex; flex-flow: column; border:1px 0;
   li {margin-bottom: 20px;}
   }
 }
-.list ul.lst_content li a dl {display: flex; flex-flow: row;
+.list ul#lst_all li a dl {display: flex; flex-flow: row;
         dt {width:30%;
           @media (min-width: ($elseSP)) {
             width: 14%;
@@ -222,6 +226,17 @@ ul.lst_content { display: block;
             }
           }
         }
+/* リストページのjs用 */
+.hidden {
+    display: none !important;
+}
+/* リストページの絞り込みボタン */
+.list .filtering {
+  display: flex; justify-content: end;
+  button {margin-left: 10px; padding: 10px; background-color:$txt-color; color: $txt-white;
+
+  }
+}
 
 /*カルーセルパネル/バナーサイズ640x400として設定*/
 ul.swiper-wrapper {padding: 0;
