@@ -273,28 +273,23 @@
 
 <script>
 // フィルター用　ページが増えたら別にjsファイル作る
-function filterItems(className) {
+const filterItems = (className) => {
     // 全てのリストアイテムを取得する
     const allItems = document.querySelectorAll('#lst_all li');
 
     // 一旦全部非表示に
-    allItems.forEach(item => {
-        item.classList.add('hidden');
-    });
+    allItems.forEach(item => item.classList.add('hidden'));
 
     // クラスに基づいて表示するものを選ぶ
     if (className === 'all') {
-        allItems.forEach(item => {
-            item.classList.remove('hidden');
-        });
+        allItems.forEach(item => item.classList.remove('hidden'));
     } else {
         // querySelectorAllで指定のクラスの要素のみを取得する
-        const specificItems = document.querySelectorAll('#lst_all li.' + className);
-        specificItems.forEach(item => {
-            item.classList.remove('hidden');
-        });
+        const specificItems = document.querySelectorAll(`#lst_all li.${className}`);
+        specificItems.forEach(item => item.classList.remove('hidden'));
     }
-}
+};
+
 </script>
 </body>
 </html>
