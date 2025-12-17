@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="">
+<!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
+<base href="">
+-->
+
+<title>Material Book | ボタンクリックでダークモードに切り替える</title>
+<!-- ドキュメントの簡単な説明 -->
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
+<meta name="description" content="JSを使ってボタンクリックでダークモードに切り替えるやつです">
+
+<!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
+<meta name="google" content="notranslate">
+<!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
+<meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
+
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+
+</head>
+<body>
+<!--JSの学習用のディレクトリなので、cssとjsはとりあえず<body>の中に書くよ-->
+<style>
+.dark-theme {background: #1b1b1b; color: #ddd;}
+.dark-theme h1 {border-bottom: 2px solid #fff;}
+.dark-theme footer ul {background: #1b1b1b; color: #fff;}
+.dark-theme .menu-content { background: #4a4b51;}
+.dark-theme .menu-btn span, .dark-theme .menu-btn span:before, .dark-theme .menu-btn span:after {background-color: #fff;}
+#btnChange {background: #0bd; padding: 1rem; margin-bottom: 2rem; font-size: 1rem; color: #fff; border-radius: 4px; border: 0;cursor: pointer;}
+@media screen and (min-width: 767px) {
+.dark-theme .menu-content {background-color: #1b1b1b;}
+.dark-theme .menu-content ul li {border: 0;}
+.dark-theme .menu-content ul li a {color: #fff;}
+.article p {width: 70%;}
+}
+</style>
+    <header>
+        <div class="logo"><a href="../">Material Book</a></div>
+        <!--menu start-->
+        <div class="hamburger-menu">
+            <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+             <input type="checkbox" id="menu-btn-check">
+             <!--  ハンバーガーボタン -->
+               <label for="menu-btn-check" class="menu-btn"><span></span></label>
+               <!--menu inner-->
+               <div class="menu-content">
+                <ul>
+                    <li><a href="../list/index.html">List</a></li>
+                    <li><a href="../article/index.html">Article</a></li>
+                    <li><a href="index.html">Learning</a></li>
+                    <li><a href="../about/index.html">About</a></li>
+                </ul>
+            </div>
+            <!--/menu inner end-->
+        </div>
+        <!--/menu end-->
+    </header>
+    
+    <main>
+        <div class="contents">
+            <section class="article">
+                <button id="btnChange">ダークモードに切替</button>
+                <h1 class="mb20">ボタンクリックでダークモードに切り替える</h1>
+                <p class="mb10">ボタンをクリックしたらダークモードに切り替えるやつ。併せてボタンのテキストも切り替わる。</p>
+                <p class="mb10">ボタンをクリックすることによってbodyにdark-themeというclassが追加されてdark-themeに設定された諸々のcssが反映されるので、他で設定されているcssは全部チェックして対応が必要やで。</p>
+                <p class="mb10">確認してて気づいたので書き留めておくけど、メニュー部分の色の変化に若干のアニメーションがかかってる気が…。ハンバーガーメニューのアニメーションが影響してるのかも。とりあえず一旦このまま。</p>
+                <p class="mb20">※ダークモードに切り替えるボタンは学習のためなので、他のページに行ったら切り替え無しです。</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../">ホーム</a>&nbsp;&gt;</li>
+            <li><a href="index.html">Learning</a>&nbsp;&gt;</li>
+            <li>ボタンクリックでダークモードに切り替える</li>
+        </ul>
+        <p>&copy;スナックいばら</p>
+    </footer>
+
+<script>
+    //ボタンのidに定数btnを割り当てる
+    const btn = document.querySelector('#btnChange');
+
+    //上で割り当てた定数の要素をクリックしたら、bodyに以下のclass名を割り当てる
+    btn.addEventListener(`click`, () => {
+        document.body.classList.toggle('dark-theme');
+
+        //btnの中のテキスおが同じなら変更するなど…
+        if(btn.textContent === 'ダークモードに切替'){
+            btn.textContent = 'ライトモードに切替';
+        } else {
+            btn.textContent = 'ダークモードに切替'
+        }
+        }
+    );
+
+</script>
+</body>
+
+</html>

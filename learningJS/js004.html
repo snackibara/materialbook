@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="">
+<!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
+<base href="">
+-->
+
+<title>Material Book | 入力した文字数を数える</title>
+<!-- ドキュメントの簡単な説明 -->
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
+<meta name="description" content="JSを使ってボタンクリックでダークモードに切り替えるやつです">
+
+<!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
+<meta name="google" content="notranslate">
+<!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
+<meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
+
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+
+</head>
+<body>
+<!--JSの学習用のディレクトリなので、cssとjsはとりあえず<body>の中に書くよ-->
+<style>
+.here {width: 100%;}
+#txtInput {border: 4px solid #ccc; border-radius: 8px; width: 100%; height: 11rem; font-size: 1.5rem; padding: 1rem; white-space: pre-wrap;}
+#txtCount {font-size: 1.5rem;}
+.alert{color: #eb3f3f; font-weight: bold;}
+@media screen and (min-width: 767px) {
+.here {width: 70%;}
+
+}
+</style>
+    <header>
+        <div class="logo"><a href="../">Material Book</a></div>
+        <!--menu start-->
+        <div class="hamburger-menu">
+            <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+             <input type="checkbox" id="menu-btn-check">
+             <!--  ハンバーガーボタン -->
+               <label for="menu-btn-check" class="menu-btn"><span></span></label>
+               <!--menu inner-->
+               <div class="menu-content">
+                <ul>
+                    <li><a href="../list/index.html">List</a></li>
+                    <li><a href="../article/index.html">Article</a></li>
+                    <li><a href="index.html">Learning</a></li>
+                    <li><a href="../about/index.html">About</a></li>
+                </ul>
+            </div>
+            <!--/menu inner end-->
+        </div>
+        <!--/menu end-->
+    </header>
+    
+    <main>
+        <div class="contents">
+            <section class="article">
+                <h1 class="mb20">入力した文字数を数える</h1>
+                <div class="here mb20">
+                    <textarea id="txtInput" class="mb10"></textarea>
+                    <p class="mb10">100文字以内で入力してください。</p>
+                    <p class="mb10">現在<span id="txtCount">0</span>文字</p>
+                </div>
+                <p class="mb10">これは使う場面もよくあるやつ。なんならローカルでも使えるので便利だよね。</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../">ホーム</a>&nbsp;&gt;</li>
+            <li><a href="index.html">Learning</a>&nbsp;&gt;</li>
+            <li>入力した文字数を数える</li>
+        </ul>
+        <p>&copy;スナックいばら</p>
+    </footer>
+
+<script>
+    //各idの要素にそれぞれ定数を割り当てる
+    const text = document.querySelector('#txtInput');
+    const count = document.querySelector('#txtCount');
+
+    //キー入力が開始された時のイベント処理
+    text.addEventListener(`keyup`, () => {
+        count.textContent = text.value.length;
+
+        //カウントが100を超えたらクラス名が追加されるしそうじゃなければクラス名は無しになる
+        if (text.value.length > 100) {
+            count.classList.add('alert');
+        } else {
+            count.classList.remove('alert');
+        }
+    });
+
+
+</script>
+</body>
+
+</html>

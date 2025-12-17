@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="">
+<!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
+<base href="">
+-->
+
+<title>Material Book | チェックボックスと送信ボタン</title>
+<!-- ドキュメントの簡単な説明 -->
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
+<meta name="description" content="JSを使ってボタンクリックでダークモードに切り替えるやつです">
+
+<!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
+<meta name="google" content="notranslate">
+<!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
+<meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
+
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+
+</head>
+<body>
+<!--JSの学習用のディレクトリなので、cssとjsはとりあえず<body>の中に書くよ-->
+<style>
+.here {width: 100%; display: flex; flex-direction: column; align-content: center;}
+label {display: block; margin: 1.5rem auto;}
+input[type="checkbox"] {appearance: auto; margin: .5rem;}
+#btnSend {background: #0bd; padding: 1rem; border-radius: 4px; margin: 0 auto 1.5rem; width: 200px; color: #fff; text-align: center;}
+#btnSend:disabled {background: #ccc; color: #333;}
+@media screen and (min-width: 767px) {
+.here {width: 70%;}
+
+}
+</style>
+    <header>
+        <div class="logo"><a href="../">Material Book</a></div>
+        <!--menu start-->
+        <div class="hamburger-menu">
+            <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+             <input type="checkbox" id="menu-btn-check">
+             <!--  ハンバーガーボタン -->
+               <label for="menu-btn-check" class="menu-btn"><span></span></label>
+               <!--menu inner-->
+               <div class="menu-content">
+                <ul>
+                    <li><a href="../list/index.html">List</a></li>
+                    <li><a href="../article/index.html">Article</a></li>
+                    <li><a href="index.html">Learning</a></li>
+                    <li><a href="../about/index.html">About</a></li>
+                </ul>
+            </div>
+            <!--/menu inner end-->
+        </div>
+        <!--/menu end-->
+    </header>
+    
+    <main>
+        <div class="contents">
+            <section class="article">
+                <h1 class="mb20">チェックボックスと送信ボタン</h1>
+                <p class="mb10">規約等に同意しないとフォームの送信ボタンが機能しないやつ。これもよくある。</p>
+                <div class="here mb20">
+                    <label><input id="check" type="checkbox">規約に同意</label>
+                    <input id="btnSend" type="submit" value="送信" disabled>
+                </div>
+                <p class="mb10">これは使う場面もよくあるやつ。なんならローカルでも使えるので便利だよね。</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../">ホーム</a>&nbsp;&gt;</li>
+            <li><a href="index.html">Learning</a>&nbsp;&gt;</li>
+            <li>チェックボックスと送信ボタン</li>
+        </ul>
+        <p>&copy;スナックいばら</p>
+    </footer>
+
+<script>
+    const isAgreed = document.querySelector('#check');
+    const btn = document.querySelector('#btnSend');
+
+    isAgreed.addEventListener(`change`, () => {
+        btn.disabled = !isAgreed.checked;
+    });
+
+</script>
+</body>
+
+</html>
