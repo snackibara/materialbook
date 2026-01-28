@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="">
+<!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
+<base href="">
+-->
+
+<title>Material Book | for文を書いてみる</title>
+<!-- ドキュメントの簡単な説明 -->
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
+<meta name="description" content="JSを使ってボタンクリックでダークモードに切り替えるやつです">
+
+<!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
+<meta name="google" content="notranslate">
+<!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
+<meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
+
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+
+</head>
+<body>
+<!--JSの学習用のディレクトリなので、cssとjsはとりあえず<body>の中に書くよ-->
+<style>
+  #cards li { border: 0; margin-bottom: 20px;}
+  #cards li a dl dt {display: flex; justify-content: center;}
+  #cards li a dl dt img { width: 60%; border-radius: 50%;}
+  #cards li a dl dd dl dt {padding: 1rem 0; border-bottom: 2px solid #85b6e1; margin-bottom: 1rem;}
+  #cards li a dl dd dl dd:nth-child(2) {-webkit-line-clamp: 2;}
+  #cards li a dl dd dl dd:nth-child(3) {display: flex;}
+  #cards li a dl dd dl dd button {background: #fda631; padding: 1.2rem; width: 60%; margin: 1rem auto; text-align: center;}
+  @media screen and (min-width: 767px) {
+    #cards li { margin-bottom: 30px;}
+  }
+  
+</style>
+    <header>
+        <div class="logo"><a href="../">Material Book</a></div>
+        <!--menu start-->
+        <div class="hamburger-menu">
+            <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+             <input type="checkbox" id="menu-btn-check">
+             <!--  ハンバーガーボタン -->
+               <label for="menu-btn-check" class="menu-btn"><span></span></label>
+               <!--menu inner-->
+               <div class="menu-content">
+                <ul>
+                    <li><a href="../list/index.html">List</a></li>
+                    <li><a href="../article/index.html">Article</a></li>
+                    <li><a href="index.html">Learning</a></li>
+                    <li><a href="../about/index.html">About</a></li>
+                </ul>
+            </div>
+            <!--/menu inner end-->
+        </div>
+        <!--/menu end-->
+    </header>
+    
+    <main>
+      <div class="contents">
+        <h1 class="mb50">for文を書いてみる</h1>
+        <p class="mb10">for文です。<br>
+        ECとかで季節のおすすめみたいな特集に使う印象…というか使ったことあるかも。</p>
+        <p class="mb10">訴求ポイント別で3商品ずつ並べるとかを1ページに纏めるような感じで詳細ページに遷移させる感じになるイメージ</p>
+        <p class="mb50">一覧ページのhtmlをそのまま使えるとコンポーネントから外れずに済むけど、特集ページとかで訴求ポイントが変わってくる場合もあるから、他ページのhtmlを元にアレンジしていくようにすると工数も計算しやすいよね。</p>
+        <ul id="cards" class="cards_v"></ul>
+        <div class="box_btn"><a href="../article/index.html" class="btn_more">&gt;&gt;&nbsp;もっと見る</a></div>
+      </div>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../">ホーム</a>&nbsp;&gt;</li>
+            <li><a href="index.html">Learning</a>&nbsp;&gt;</li>
+            <li>for文を書いてみる</li>
+        </ul>
+        <p>&copy;スナックいばら</p>
+    </footer>
+
+<script>
+    const cards = document.querySelector('#cards');
+
+const lists = [
+  {
+    img:'IMG_6780.jpg',
+    title: 'サイト内整理',
+    text: '少しこのプロジェクトの整理を行いました。JSの学習を試したりしてたらカテゴリとして1つできるなーとメニューを整理したらメニューの詳細みたいなものを置きたくなったり、色々整理していくうちにエンドレスになるのが目に見えるので一旦ここまで。',
+    lnkUrl:'007.html',
+  },
+  {
+    img:'IMG_6840.jpg',
+    title: 'CSSで画像にハーフトーン加工する',
+    text: '多分これを使う事は無いと思うので自分で勝手に試してみるやつ。使いどころは思いつかないけどやってみたいんだもん。',
+    lnkUrl:'006.html',
+  },
+  {
+    img:'IMG_6780.jpg',
+    title: 'CSSでカルーセルパネルを作れる！？',
+    text: 'あーいよいよCSSでこれ作れるようになったで！ということで作ってみた。',
+    lnkUrl:'005.html',
+  },
+  {
+    img:'IMG_6824.jpg',
+    title: '疑似クラス:has()について考える',
+    text: 'よくある画像の有る無しで試してみるとする…。保持したいのは以下の点',
+    lnkUrl:'004.html',
+  },
+  {
+    img:'IMG_6840.jpg',
+    title: 'CSSで好きな記述',
+    text: '本当はカスケードレイヤーについて考えたかったんだけど、CSSの色々を書いてたら「あーこの記述すき！」というのが頭から離れなくなったので、それについて書き殴ることにする。',
+    lnkUrl:'003.html',
+  },
+  {
+    img:'IMG_6824.jpg',
+    title: 'スタイルクエリについて考える',
+    text: '確かにこれは動的な箇所と組み合わせるとヒジョーに便利。な気がする。Nweが付く付かないとかカテゴリ毎に色を変えられるとか。手を広げすぎずという判断も重要だけど。',
+    lnkUrl:'002.html',
+  },
+];
+
+for(let i = 0; i < lists.length; i++) {
+  const {lnkUrl, img, title, text} = lists[i];
+  const content = `<li>
+<a href="../article/${lnkUrl}">
+<dl>
+<dt><img src="../images/${img}" width="100px" height="100px" alt=""></dt>
+<dd>
+<dl>
+<dt>${title}</dt>
+<dd>${text}</dd>
+<dd><button>詳細を見る</button></dd>
+</dl>
+</dd>
+</dl>
+</a>
+</li>`;
+  cards.insertAdjacentHTML('beforeend', content);
+}
+
+</script>
+</body>
+
+</html>
