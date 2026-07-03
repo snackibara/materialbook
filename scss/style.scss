@@ -5,9 +5,9 @@
 
 $txt-color: #333;
 $txt-white:#fff;
-$color-2nd:#85b6e1;
+$color-2nd:#8b0606;
 $color-3rd:#ccc;
-$color-link:#0f69b6;
+$color-link:#b6390f;
 $color-highlight:#f6eb9b;
 $elseSP:768px;
 $color-categoryA :#713CDB;
@@ -134,22 +134,22 @@ ul.cards_h li a, ul#lst_all li a {padding: 10px;
 &:hover {opacity: 0.8;}
 }
 
-ul.cards_h li a dl, ul#lst_all li a dl {display: flex; flex-flow: row;
-      dt {width:30%; height: auto; aspect-ratio: 1; line-height: 0;
+ul.cards_h li a article, ul#lst_all li a article {display: flex; flex-flow: row;
+      .box_img {width:30%; height: auto; aspect-ratio: 1; line-height: 0;
         img {width: 100%; height: auto;}
       }
-      dd {padding-left: 10px; width: 100%;
+      .box_txt {padding-left: 10px; width: 100%; flex-flow: column; width: 100%;
         @media (min-width: ($elseSP)) {
           width: 100%; padding-left: 20px;
         }
 
-      dl{ flex-flow: column; width: 100%;
-        dt {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px;
+      .box_txt{ flex-flow: column; width: 100%;
+        h2, h3 {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px; border-bottom: dotted 4px $color-3rd;
           @media (min-width: ($elseSP)) {
             font-size: 2.4rem; 
           }
         }
-        dd {width:100%;padding: 0;
+        p {width:100%;padding: 0;
           display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* 制限したい行数が3の場合 */
@@ -158,26 +158,26 @@ ul.cards_h li a dl, ul#lst_all li a dl {display: flex; flex-flow: row;
     }
     }
 
+
 /*カード縦型*/    
 ul.cards_v li {overflow: hidden;
-  a {
+  a {flex-flow: column; width: 100%;
     &:hover {opacity: .8;}
-    dl {display: flex; flex-flow: column;
-      dt {width:100%; height: auto; aspect-ratio: 8 / 5; line-height: 0; overflow: hidden;
+    article {display: flex; flex-flow: column;
+      .box_img {width: 100%; height: auto; aspect-ratio: 8 / 5; line-height: 0; overflow: hidden;
         img {width: 100%; height: auto;}
       }
-      dd {padding: 10px; width: 100%;
-      dl {flex-flow: column; width: 100%;
-        dt {line-height: 1.4; width: 100%; aspect-ratio: auto; font-weight: bold;}
-        dd {width:100%;padding: 0;display: -webkit-box;
+      .box_txt{ padding: 1rem;
+        h2, h3 {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px; padding: 0 0 5px; border-bottom: dotted 4px $color-3rd; border-left: 0; font-weight: bold;}
+        p {width:100%;padding: 0;display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 3; /* 制限したい行数が3の場合 */
           overflow: hidden;}
       }
-      }
     }
   }
 }
+
 .box_txtR {display: flex; flex-flow: row-reverse;
   .txtlnk {color: #2e47a1;
   &:hover { opacity: .8;}
@@ -202,30 +202,28 @@ ul#lst_all { display: block;
   li {margin-bottom: 20px;}
   }
 }
-.list ul#lst_all li a dl {display: flex; flex-flow: row;
-        dt {width:30%;
+.list ul#lst_all li a article {display: flex; flex-flow: row;
+        .box_img {width:30%;
           @media (min-width: ($elseSP)) {
             width: 14%;
           }
         }
-        dd {padding-left: 10px; width: 100%;
+        .box_txt {padding-left: 10px; width: 100%; flex-flow: column;
           @media (min-width: ($elseSP)) {
             padding-left: 20px;
           }
-          dl{ flex-flow: column;
-            dt {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px; font-weight: bold;
+            h2 {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px; padding-left: 0; font-weight: bold; border: 0;
               @media (min-width: ($elseSP)) {
-                font-size: 2.4rem; 
+                font-size: 1.8rem; 
               }
             }
-            dd {width:100%;padding: 0;
+            p {width:100%;padding: 0;
               display: -webkit-box;
               -webkit-box-orient: vertical;
               -webkit-line-clamp: 2; /* 制限したい行数が3の場合 */
               overflow: hidden;}
             }
           }
-        }
 /* リストページのjs用 */
 .hidden {
     display: none !important;

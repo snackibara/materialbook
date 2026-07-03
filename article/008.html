@@ -8,11 +8,11 @@
 <base href="">
 -->
     
-<title>Material Book | スタイルクエリについて考える</title>
+<title>Material Book | CSSの筋トレ？</title>
 <!-- ドキュメントの簡単な説明 -->
 <!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
-<meta name="description" content="ページの説明">
-<meta name="keuwords" content="スタイルクエリ, CSS">
+<meta name="description" content="CSSで好きな記述について書きなぐる">
+<meta name="keuwords" content="CSS">
     
 <!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
 <meta name="google" content="notranslate">
@@ -89,148 +89,44 @@
   <!--/menu end-->
   
 </header>
-
 <main>
-
-
+<style>
+  pre {padding: 1rem; background-color: #d6e9fa;}
+</style>
+<article>
 <div class="contents">
 <section class="article">
-  <h1 class="mb20">スタイルクエリについて考える</h1>
-  <p class="mb10">コンテナクエエリと併用してスタイルクエリを使ってみる。<br>
-  確かにこれは動的な箇所と組み合わせるとヒジョーに便利。な気がする。Nweが付く付かないとかカテゴリ毎に色を変えられるとか。手を広げすぎずという判断も重要だけど。</p>
-  <p class="mb20">コンテナクエリと併用してるって言ってもコンテナクエリの記述は使いまわしてるから、コンテナクエエリ自体の利便性はまだ上がった気はしないけど、コピペするなら1回書いたら…（以下略</p>
+  <h1 class="mb20">CSSの筋トレ？</h1>
+  <p>ChatGPTに例題を出してもらって色々なCSSのみならずJavaScriptを書いたりする。</p>
+  <p>目的は得意じゃないところの強化というか理解や応用を繰り返してとにかく刷り込む作業みたいなことなので、筋トレみたいだなーと。</p>
+  <p class="mb20">まずは自分で苦手意識のあるものの解釈を確認して普通に使う場合から応用編までを、こことかCODEPENで試すのが大体の流れになってます。はい。</p>
+  <h2 class="mb20">どうしてCODEPEN</h2>
+  <p>このスペースあるならそれで良くない？とも思うけど、やっぱりweb上で色々試して確認できるのはお手軽だし、単純にタブレットでも書けるし確認できるから。</p>
+  <p class="mb20">元々jsの学習の過程や応用を簡単に確認したかっただけなんだけど、CSSも軽ーく試すにはやっぱり楽だよねCODEPEN。</p>
 
-<style>
-.product-area {container-type: inline-size;}
-.product-list {display: flex; justify-content: space-between; flex-wrap: wrap;}
-.product-card-container {width: calc((100% - 40px) / 2);margin-bottom: 20px;}
-.meta {padding: 1rem;}
-
-@container (max-width: 430px) {
-  .product-list {flex-direction:column; justify-content: center;}  
-  .product-card-container { width: 100%!Important;}
-}
-
-.media-img { position: relative;
-  }
-.media-img img { width: 100%; height: auto;
-  }
-
-/* style query demo */
-/* want to see if the --detail var is not blank, then set the content to the content of its value */
-@container style(--detail: favorite) {
-  .ribbon {
-  display: inline-block;
-  position: absolute;
-  height: 60px;/*高さ*/
-  line-height: 60px;/*高さ*/
-  text-align: center;
-  padding: 0 40px 0 18px;/*文字の左右の余白*/
-  font-size: 18px;/*文字サイズ*/
-  background: #d29632;/*背景色*/
-  color: #FFF;/*文字色*/
-  box-sizing: border-box;
-  left: -4px;
-  top: 10px;
-}
-.ribbon:before {content: 'favorite';}
-.ribbon:after {
-  position: absolute;
-  content: '';
-  width: 0px;
-  height: 0px;
-  z-index: 1;
-}
-
-.ribbon:after {
-  top: 0;
-  right: -15px;
-  border-width: 30px 15px 30px 0px;
-  border-color: #d29632 transparent #d29632 #d29632;
-  border-style: solid;
-}
-
-  .comment-block {
-    display: block;
-  }
-  .product-card {
-    border: 4px solid #c17474;
-  }
-}
-
-
-
-
-
-</style>
-
-<div class="product-area">
-  <div class="section-header">
-    <h2 class="mb20">ロンドンでのお気に入り風景</h2>
-  </div>
-  
-  <div class="product-list four-by">
-    <div class="product-card-container" style="--detail: test">
-      <div class="product-card">
-        <div class="media-img">
-          <img src="../images/IMG_6842.jpg" alt="エロス像">
-          <div class="ribbon4"></div>
-        </div>
-        <div class="meta">
-          <h3>ピカデリーサーカスのエロス像</h3>
-          <p>正式名称は違うけど待ち合わせと言えばエロス像</p>
-        </div>
-      </div>
-    </div>
-    <div class="product-card-container">
-      <div class="product-card">
-        <div class="media-img">
-          <img src="../images/IMG_6780.jpg" alt="ウエストミンスター・アビー">
-          <div class="comment-block"></div>
-        </div>
-        <div class="meta">
-          <h3>ウエストミンスター・アビーの西側</h3>
-          <p>扉の向こうはとにかく圧巻。</p>
-        </div>
-      </div>
-    </div>
-    <div class="product-card-container">
-      <div class="product-card">
-        <div class="media-img">
-          <img src="../images/IMG_6840.jpg" alt="ピカデリーサーカス出口">
-          <div class="comment-block"></div>
-        </div>
-        <div class="meta">
-          <h3>ピカデリーサーカス駅の出口</h3>
-          <p>ドキドキの瞬間</p>
-        </div>
-      </div>
-    </div>
-    <div class="product-card-container" style="--detail: favorite">
-      <div class="product-card">
-        <div class="media-img">
-          <img src="../images/IMG_6841.jpg" alt="リージェントストリート">
-          <div class="ribbon"></div>
-        </div>
-        <div class="meta">
-          <h3>リージェントストリート</h3>
-          <p>何度見ても曲線美が素晴らしい</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <h2 class="mb20">たまに起こる「うそでしょ？！」</h2>
+  <p class="mb10">質問やオーダーに不足が多いからそうなるんだけど、アイツたまに変な事を言いやがるんす。<br>
+  この間gridベースでfluidの筋トレしてたんです。</p>
+  <p>まずページのレイアウトをgridで組んで〜</p>
+  <p>fluidでsidebarの幅を〜</p>
+  <p>ちょ！fluid使うってことはレスポンシブ前提だよね。sideberって！<br>
+  イヤ。でも。私の知らない何か素敵なことが起こるのかも！と思い<br>
+スマホでsidebarって普通？と聞いたら<br>
+良い視点！<br>
+と帰ってきた（笑）。<br>
+そして次に提案された筋トレが「モバイルファースト設計の本質」だった。</p>
+<p>ごめんね出題のオーダーが不十分なのに変な事を言いやがるとか思って。</p>  
 </div>
 
-</section><!--/about-->
-
-
+</section>
 </div><!--/contents-->
+</article>
 </main>
 <footer>
     <ul>
         <li><a href="../">ホーム</a>&nbsp;&gt;</li>
         <li><a href="index.html">Article</a>&nbsp;&gt;</li>
-        <li>スタイルクエリについて考える</li>
+        <li>CSSで好きな記述</li>
     </ul>
     <p>&copy;スナックいばら</p>
 </footer>

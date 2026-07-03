@@ -16,10 +16,12 @@
   align-items: center;
   z-index: 90;
   background-color: transparent;
-  /*三本線*/
 }
 .menu-btnhover {
   cursor: pointer;
+}
+.menu-btn {
+  /*三本線*/
 }
 .menu-btn span, .menu-btn span:before, .menu-btn span:after {
   content: "";
@@ -117,9 +119,6 @@
   }
 }
 /*-----about*/
-.about {
-  /*aboutの定義リスト*/
-}
 @media screen and (min-width: 767px) {
   .about {
     padding: 20px;
@@ -128,6 +127,9 @@
 .about li {
   list-style-type: disc;
   list-style-position: inside;
+}
+.about {
+  /*aboutの定義リスト*/
 }
 .about dl {
   margin-left: 1.5rem;
@@ -621,7 +623,7 @@ h2.name_cate::after {
   position: absolute;
   content: " ";
   display: block;
-  border-bottom: solid 5px #85b6e1;
+  border-bottom: solid 5px #8b0606;
   bottom: -5px;
   left: 0;
   width: 30%;
@@ -635,7 +637,7 @@ h2.name_cate::after {
 }
 
 footer {
-  background-color: #85b6e1;
+  background-color: #8b0606;
   color: #fff;
   padding: 0 0 20px 0;
   width: 100%;
@@ -668,7 +670,7 @@ footer ul li {
   display: inline-block;
 }
 footer ul li a {
-  color: #0f69b6;
+  color: #b6390f;
 }
 
 section {
@@ -729,46 +731,49 @@ ul.cards_h li a:hover, ul#lst_all li a:hover {
   opacity: 0.8;
 }
 
-ul.cards_h li a dl, ul#lst_all li a dl {
+ul.cards_h li a article, ul#lst_all li a article {
   display: flex;
   flex-flow: row;
 }
-ul.cards_h li a dl dt, ul#lst_all li a dl dt {
+ul.cards_h li a article .box_img, ul#lst_all li a article .box_img {
   width: 30%;
   height: auto;
   aspect-ratio: 1;
   line-height: 0;
 }
-ul.cards_h li a dl dt img, ul#lst_all li a dl dt img {
+ul.cards_h li a article .box_img img, ul#lst_all li a article .box_img img {
   width: 100%;
   height: auto;
 }
-ul.cards_h li a dl dd, ul#lst_all li a dl dd {
+ul.cards_h li a article .box_txt, ul#lst_all li a article .box_txt {
   padding-left: 10px;
+  width: 100%;
+  flex-flow: column;
   width: 100%;
 }
 @media (min-width: 768px) {
-  ul.cards_h li a dl dd, ul#lst_all li a dl dd {
+  ul.cards_h li a article .box_txt, ul#lst_all li a article .box_txt {
     width: 100%;
     padding-left: 20px;
   }
 }
-ul.cards_h li a dl dd dl, ul#lst_all li a dl dd dl {
+ul.cards_h li a article .box_txt .box_txt, ul#lst_all li a article .box_txt .box_txt {
   flex-flow: column;
   width: 100%;
 }
-ul.cards_h li a dl dd dl dt, ul#lst_all li a dl dd dl dt {
+ul.cards_h li a article .box_txt .box_txt h2, ul.cards_h li a article .box_txt .box_txt h3, ul#lst_all li a article .box_txt .box_txt h2, ul#lst_all li a article .box_txt .box_txt h3 {
   line-height: 1.4;
   width: 100%;
   aspect-ratio: auto;
   margin-bottom: 5px;
+  border-bottom: dotted 4px #ccc;
 }
 @media (min-width: 768px) {
-  ul.cards_h li a dl dd dl dt, ul#lst_all li a dl dd dl dt {
+  ul.cards_h li a article .box_txt .box_txt h2, ul.cards_h li a article .box_txt .box_txt h3, ul#lst_all li a article .box_txt .box_txt h2, ul#lst_all li a article .box_txt .box_txt h3 {
     font-size: 2.4rem;
   }
 }
-ul.cards_h li a dl dd dl dd, ul#lst_all li a dl dd dl dd {
+ul.cards_h li a article .box_txt .box_txt p, ul#lst_all li a article .box_txt .box_txt p {
   width: 100%;
   padding: 0;
   display: -webkit-box;
@@ -781,39 +786,42 @@ ul.cards_h li a dl dd dl dd, ul#lst_all li a dl dd dl dd {
 ul.cards_v li {
   overflow: hidden;
 }
+ul.cards_v li a {
+  flex-flow: column;
+  width: 100%;
+}
 ul.cards_v li a:hover {
   opacity: 0.8;
 }
-ul.cards_v li a dl {
+ul.cards_v li a article {
   display: flex;
   flex-flow: column;
 }
-ul.cards_v li a dl dt {
+ul.cards_v li a article .box_img {
   width: 100%;
   height: auto;
   aspect-ratio: 8/5;
   line-height: 0;
   overflow: hidden;
 }
-ul.cards_v li a dl dt img {
+ul.cards_v li a article .box_img img {
   width: 100%;
   height: auto;
 }
-ul.cards_v li a dl dd {
-  padding: 10px;
-  width: 100%;
+ul.cards_v li a article .box_txt {
+  padding: 1rem;
 }
-ul.cards_v li a dl dd dl {
-  flex-flow: column;
-  width: 100%;
-}
-ul.cards_v li a dl dd dl dt {
+ul.cards_v li a article .box_txt h2, ul.cards_v li a article .box_txt h3 {
   line-height: 1.4;
   width: 100%;
   aspect-ratio: auto;
+  margin-bottom: 5px;
+  padding: 0 0 5px;
+  border-bottom: dotted 4px #ccc;
+  border-left: 0;
   font-weight: bold;
 }
-ul.cards_v li a dl dd dl dd {
+ul.cards_v li a article .box_txt p {
   width: 100%;
   padding: 0;
   display: -webkit-box;
@@ -841,7 +849,7 @@ ul.cards_v li a dl dd dl dd {
 .box_btn .btn_more {
   padding: 10px;
   color: #fff;
-  background-color: #85b6e1;
+  background-color: #8b0606;
   width: 90%;
   text-align: center;
 }
@@ -884,43 +892,43 @@ ul#lst_all .catL {
   }
 }
 
-.list ul#lst_all li a dl {
+.list ul#lst_all li a article {
   display: flex;
   flex-flow: row;
 }
-.list ul#lst_all li a dl dt {
+.list ul#lst_all li a article .box_img {
   width: 30%;
 }
 @media (min-width: 768px) {
-  .list ul#lst_all li a dl dt {
+  .list ul#lst_all li a article .box_img {
     width: 14%;
   }
 }
-.list ul#lst_all li a dl dd {
+.list ul#lst_all li a article .box_txt {
   padding-left: 10px;
   width: 100%;
+  flex-flow: column;
 }
 @media (min-width: 768px) {
-  .list ul#lst_all li a dl dd {
+  .list ul#lst_all li a article .box_txt {
     padding-left: 20px;
   }
 }
-.list ul#lst_all li a dl dd dl {
-  flex-flow: column;
-}
-.list ul#lst_all li a dl dd dl dt {
+.list ul#lst_all li a article .box_txt h2 {
   line-height: 1.4;
   width: 100%;
   aspect-ratio: auto;
   margin-bottom: 5px;
+  padding-left: 0;
   font-weight: bold;
+  border: 0;
 }
 @media (min-width: 768px) {
-  .list ul#lst_all li a dl dd dl dt {
-    font-size: 2.4rem;
+  .list ul#lst_all li a article .box_txt h2 {
+    font-size: 1.8rem;
   }
 }
-.list ul#lst_all li a dl dd dl dd {
+.list ul#lst_all li a article .box_txt p {
   width: 100%;
   padding: 0;
   display: -webkit-box;

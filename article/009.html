@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="../favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
+<base href="">
+-->
+    
+<title>Material Book | 久しぶりにLINE スタンプを作った話</title>
+<!-- ドキュメントの簡単な説明 -->
+<!-- contentの値は、検索エンジンの結果として使用される場合があります。(だいたい150文字まで。デバイスによって表示される文字数がかわる事もある) keywordに関しては適切なものを入れないのであれば無い方がいい -->
+<meta name="description" content="CSSで好きな記述について書きなぐる">
+<meta name="keuwords" content="CSS">
+    
+<!-- このドキュメントの翻訳を提供しないようGoogleに指示 -->
+<meta name="google" content="notranslate">
+<!-- 検索エンジンのクロールとインデックス作成の動作を制御 -->
+<meta name="robots" content="none"><!-- すべての検索エンジン用 公開しないのでnoneを入れておくことにする -->
+    
+<!-- SMS系
+<meta property="fb:app_id" content="FBから割り振られるID">
+<meta property="og:url" content="ページのURL">
+<meta property="og:type" content="website"> // カテゴリから選ぶ。トップページはwebsite、それ以外はarticleにしておけば問題ないものの、製品の紹介ページはproductにした方が良いが、それ以外は要確認
+<meta property="og:title" content="ページタイトル">
+<meta property="og:image" content="ページ用サムネのURL"> // ページのメインイメージを適用するが、サイズに注意
+<meta property="og:image:alt" content="サムネ画像のalt"> // 代替えテキストとして必要
+<meta property="og:description" content="ページの説明"> // 他のdescriptionと同じにしておく
+<meta property="og:site_name" content="サイト名">
+<meta property="og:locale:alternate" content="ja_JP">　// 設定しなくてもOK 
+<meta property="article:author" content=""> // 記事に対しての詳細な設定。無くても問題ない。
+    
+//twitter (X)カード
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@アカウント名">
+<meta name="twitter:creator" content="@individual_account">
+<meta name="twitter:url" content="https://example.com/page.html">　//設定無くても問題ないししない方がページ毎にURL入るのでは？
+<meta name="twitter:title" content="ページタイトル">　//設定無くても問題ないししない方がページ毎にページタイトル入るのでは？
+<meta name="twitter:description" content="ページの説明">　//設定無くても問題ないししない方がページ毎にページタイトル入るのでは？
+<meta name="twitter:image" content="サムネ画像のalt">　//設定無くても問題ないししない方がページ毎に画像が入るのでは？
+<meta name="twitter:image:alt" content="サムネ画像のalt">　//サムネを設定するなら必要
+-->
+
+<!--link rel="stylesheet" href="css/reset.css"-->
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.min.css">
+<!--script>
+//スマホのページ内リンク用 *一旦コメントアウト
+//$(function () {
+//  let headH = $("header").outerHeight(); //ヘッダーの高さを取得
+//  let animeSpeed = 500; //アニメーションスピード
+//  $("a[href^='#']").on({
+//  "click": function () {
+//  let href = $(this).attr("href");
+//  let target = $(href == "#" || href === "" ? "html" : href);
+//  let position;
+//  position = target.offset().top - headH; //ターゲットまでの距離からヘッダーの高さを引く
+//  $("body,html").stop().animate({
+//  scrollTop: position
+//  }, animeSpeed);
+//  return false;
+//  }
+//  });
+//});
+</script-->
+</head>
+<body>
+<header>
+  <div class="logo"><a href="../">Material Book</a></div>
+  
+  <!--menu start-->
+  <div class="hamburger-menu">
+  <!-- ボタンが押されたかどうかをチェックボックスで判断する -->
+  <input type="checkbox" id="menu-btn-check">
+  <!--  ハンバーガーボタン -->
+  <label for="menu-btn-check" class="menu-btn"><span></span></label>
+  <!--menu inner-->
+  <div class="menu-content">
+  <ul>
+    <li><a href="../list/index.html">List</a></li>
+    <li><a href="index.html">Article</a></li>
+    <li><a href="../learningJS/index.html">Learning</a></li>
+    <li><a href="../about/index.html">About</a></li>
+  </ul>
+  </div>
+  <!--/menu inner end-->
+  </div>
+  <!--/menu end-->
+  
+</header>
+<main>
+<style>
+  body {line-height: 1.8;} /*文章メインなので行間を少し広く取ります*/
+  pre {padding: 1rem; background-color: #d6e9fa;}
+  h3 {border-bottom: dotted 4px #666; display: inline-block;}
+  .lnk_stamp {margin: 1.8rem auto; padding: 1.6rem; background-color: #8b0606; border-radius: 4px; display: inline-block; color: #fff;}
+  a {color:#8b0606;}
+</style>
+<article>
+<div class="contents">
+<section class="article">
+  <h1 class="mb20">久しぶりにLINE スタンプを作った話</h1>
+  <p class="mb20">この度、約10年ぶりに<a href="https://store.line.me/stickershop/product/34403686/ja" name="" target="_blank" >LINEスタンプ</a>を作りました。<br>
+  その際にやった事を忘備録も兼ねて長々と書いておきます。</p>
+  <h2 class="mb10">なぜ今？！思いたったきっかけ</h2>
+  <p>きっかけは友達の「みんなにライブのお知らせするの忘れてたんだよね〜」という一言。<br>
+  そこで「LIVEやります」ってスタンプあれば良くない？という事だった。はず。。。</p>
+  <p class="mb20">以前、共通の友人に頼まれて作ったアバターっぽいキャラクターのデータを掘り起こし、イラレの知識も一緒に掘り起こそうと制作に至りました。</p>
+  <h2 class="mb10">まずやったこと</h2>
+  <h3 class="mb10">文言のリストアップ</h3>
+  <p>LINEスタンプは8の倍数で40個までのセットを作れるので、40個目指して文言を選別しました。</p>
+  <p>「LIVEやります」とか特殊すぎるので、見に行く側の視点も追加して数を稼ぐ事に成功！<br>
+  実際その方が使い勝手も広がるから助かったー。<br>
+そして過去に作ったスタンプでも使った汎用性のある文言を足して、大体30個ぐらいリストアップ。</p>
+<p class="mb20">とはいえ、作りながら「やっぱりやめよう」とか「これも足しておこう」が出てくると踏んで一旦ここまで。</p>
+<h3 class="mb10">フォント選び</h3>
+<p>レトロ感も欲しかったので飴鞭ゴシックを使いたかったんだけど、まずは諸々確認しようと思ったら飴鞭ゴシックが有料化してた！</p>
+<p>ここで一旦<br>
+  「えー？！えー？！えーーーーっ？！<br>
+  私がDLした時は無料だったのにー」<br>
+  となったので、とりあえずChatGPTに相談。<br>
+  焦点は「それでも商用で使うか否か」。もちろん予想通りの<br>
+  「別のフォントにした方が安全。似たようなの出す？」<br>
+  と言われ、いくつか出してもらうものの全然思うようなフォントが出てこなかった。</p>
+<p class="mb20">本当はもっと可憐な感じが欲しくて色々探したものの思うような答えに辿り着けず、結局Google FontsのDela Gothic Oneを使う事に…。</p>
+<h3 class="mb10">キャラ確認</h3>
+<p class="mb20">掘り起こそうと思ったキャラはオーダーが「マリオネットっぽい感じ」だったものの、<br>
+  私の力量不足により「影絵っぽいのならいけるかも」という発想からできた影絵キャラ。<br>
+書いた当時の「手足はパーツ化しておけば、ポーズとか変えやすいんじゃね？」という<br>
+手抜きアイディアを活かしてポーズのパターンは行けそうだなと思ったけど、そのキャラ1つで40個ってキツイなーと<br>
+別キャラをいくつか追加する事にした。</p>
+<h3 class="mb10">ガイドラインの再確認</h3>
+<p class="mb20">前回LINEスタンプを作ったのはほぼ10年前。<br>
+  しかもディレクターという存在もいたので、改めてガイドラインを読み返していよいよ作業へ。</p>
+<h2 class="mb10">イラレでの作業</h2>
+<h3 class="mb10">最初の1つを作成</h3>
+<p>とりあえず1つ。共通する装飾を作ってスタンプの全体的なイメージを決める。</p>
+<p>影絵の人形イメージとはいえポリコレ的な事にかするだけでも嫌なので、できるだけ非日常的な枠に入れようとフレームになるような装飾を設置した。</p>
+<p class="mb20">とりあえず1つ。共通する装飾を作ってスタンプの全体的なイメージを決める、</p>
+<h3 class="mb10">やはりファイルは2つ</h3>
+<p>スタンプ用のファイルでスタンプの数だけアートボードを増やして行くものの<br>
+余白でパス使うのは後々邪魔だったりするので、下書き用のファイルも用意した。</p>
+<p class="mb20">って書いてるけど、実はタブレットでペンシル的なものを使って下書きする事もあったのでファイルは2.5こぐらいかな。</p>
+<h3 class="mb10">地味に面倒な余白の10px</h3>
+<p>影絵の劇場のイメージなので余白の10pxは地味に面倒だった。</p>
+<p>背景用のレイヤーをうっかりロックしたままにするとアートボードを複製する時に複製されないし<br>
+かと言って作業中にロックしておかないとズレるリスクもある。</p>
+<p class="mb20">なので1こ出来てロック外してアートボードを複製して作業時に再びロックの繰り返しなんだけど、常に確認できるという利点はある。</p>
+<h3 class="mb10">細かい事に引っかかりすぎない</h3>
+<p>これは結構気をつけた。1つ引っかかると他も気になって結局全て気に入らず、いつまで経っても終わらなくなるから。</p>
+<p>人の目に触れるもの。ましてや販売するものだから細部にも気を配るのは当然なんだけど、今回はとにかくスタンプの完成に重きを置いた。</p>
+<p>そもそも絵心無いし。もっと素敵なスタンプなんていっぱいあるし。<br>
+  売ることじゃなくて作る事が目的だったので、出来ない事に時間をかけ過ぎない事にした。</p>
+<p class="mb20">それもあって28個作った時点で「32個にしよう」と数も決定した。</p>
+<h2 class="mb10">申請、そしていよいよ販売開始</h2>
+<h3 class="mb10">ドキドキの申請</h3>
+<p>全てのデータが出来上がって目を皿のようにして確認、書き出しを終えたらLINE Creators Marketにアカウントを登録。<br>
+個人の諸々の情報を登録していよいよ申請に移る。</p>
+<p class="mb20">データをアップロードして個別にタグを設定して、再び目を皿のようにして確認した後申請ボタンをクリックした。</p>
+<h3>販売開始</h3>
+<p class="mb20">申請の4日後ぐらいに審査完了の通知が届いた。わードキドキ。<br>
+  再び「ホントにこれを世に出すのか？」と一瞬よぎりつつも。私としてはこれがゴールなので『販売開始』をクリックした。</p>
+<h2 class="mb10">その後</h2>
+<h3>アピール下手の発動</h3>
+<p>言うても有料のスタンプ。そして今どき新しくLINEスタンプ買う人っているのか？ぐらいの感覚なので<br>
+申し訳なさが先立って『LINEスタンプ作ったよ〜！』とはなかなかならなかったんだけど<br>
+今回のきっかけとなった友人達とも繋がりのある人っぽいキャラをスタンプに登場させてた事もあり<br>
+プレゼントとして贈ることにした。</p>
+<p class="mb10">それから過去に一緒に働いていたデザイナーの皆さんが繋がってるSNSに投稿したり、きっかけとなった友人に関わるLINEグループでお知らせしたり…。<br>
+でも仕事じゃないから「買ってね〜」とか言わないの。「よかったら見てね〜」が精一杯。<br>
+それでも数人買ってくれてありがたいなーという思いでいっぱい。</p>
+<p class="mb20">そして一番最初に絵書いてーと頼んできた友人には墓前で報告してきた。<br>
+多分あの時のお願いがなければこれやってないし、買ってくれた人達に感謝する事もなかったので。</p>
+<h3>イラレでの作業が楽しくなる</h3>
+<p>久しぶりにイラレで作業したので楽しさが出てきた。<br>
+「これってどうやるんだっけ？」みたいなのを調べ直しながら作業してたのでSNSにもイラレのテクニックが出てくるようになり、へーとかほーとか無駄に試してみたくなったり。</p>
+<p class="mb20">今回のとは全然テイストが違うスタンプ作るのもいいなーと思ったり。<br>
+あとは私にセンスがあればねーと思っています。</p>
+
+<h2>LINEスタンプ『光と影の影絵劇場』</h2>
+<p>と、長々書きましたが、実際のLINEスタンプ『光と影の影絵劇場』になります。</p>
+<p>影が二つ被ってるのが気になるタイトルは自分でも気になっています。</p>
+<a href="https://store.line.me/stickershop/product/34403686/ja" name="" target="_blank" class="lnk_stamp">LINE スタンプ光と影の影絵劇場</a>
+ </div>
+</section>
+</div><!--/contents-->
+</article>
+</main>
+<footer>
+    <ul>
+        <li><a href="../">ホーム</a>&nbsp;&gt;</li>
+        <li><a href="index.html">Article</a>&nbsp;&gt;</li>
+        <li>CSSで好きな記述</li>
+    </ul>
+    <p>&copy;スナックいばら</p>
+</footer>
+
+</body>
+</html>

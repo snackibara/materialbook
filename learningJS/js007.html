@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="../favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <base href="">
 <!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
@@ -28,12 +28,13 @@
 <!--JSの学習用のディレクトリなので、cssとjsはとりあえず<body>の中に書くよ-->
 <style>
   #cards li { border: 0; margin-bottom: 20px;}
-  #cards li a dl dt {display: flex; justify-content: center;}
-  #cards li a dl dt img { width: 60%; border-radius: 50%;}
-  #cards li a dl dd dl dt {padding: 1rem 0; border-bottom: 2px solid #85b6e1; margin-bottom: 1rem;}
-  #cards li a dl dd dl dd:nth-child(2) {-webkit-line-clamp: 2;}
-  #cards li a dl dd dl dd:nth-child(3) {display: flex;}
-  #cards li a dl dd dl dd button {background: #fda631; padding: 1.2rem; width: 60%; margin: 1rem auto; text-align: center;}
+  #cards li article {display: flex; flex-direction: column;}
+  #cards li article .box_img {display: flex; justify-content: center; margin-bottom: 2rem;}
+  #cards li article .box_img img { width: 60%; height: auto; border-radius: 50%;}
+  #cards li article .box_txt dl dt {padding: 1rem 0; border-bottom: 2px solid #85b6e1; margin-bottom: 1rem;}
+  #cards li article .box_txt h3 {-webkit-line-clamp: 2; font-weight: bold; border-bottom: dotted 4px #ccc; margin-bottom: .8rem;}
+  #cards li article .box_txt p {display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; min-height: 8rem;}
+  #cards li article button {background: #fda631; padding: 1.2rem; width: 60%; margin: 1rem auto; text-align: center; cursor: pointer;}
   @media screen and (min-width: 767px) {
     #cards li { margin-bottom: 30px;}
   }
@@ -89,55 +90,51 @@ const lists = [
     img:'IMG_6780.jpg',
     title: 'サイト内整理',
     text: '少しこのプロジェクトの整理を行いました。JSの学習を試したりしてたらカテゴリとして1つできるなーとメニューを整理したらメニューの詳細みたいなものを置きたくなったり、色々整理していくうちにエンドレスになるのが目に見えるので一旦ここまで。',
-    lnkUrl:'007.html',
+    lnkUrl:'../article/007.html',
   },
   {
     img:'IMG_6840.jpg',
     title: 'CSSで画像にハーフトーン加工する',
     text: '多分これを使う事は無いと思うので自分で勝手に試してみるやつ。使いどころは思いつかないけどやってみたいんだもん。',
-    lnkUrl:'006.html',
+    lnkUrl:'../article/006.html',
   },
   {
     img:'IMG_6780.jpg',
     title: 'CSSでカルーセルパネルを作れる！？',
     text: 'あーいよいよCSSでこれ作れるようになったで！ということで作ってみた。',
-    lnkUrl:'005.html',
+    lnkUrl:'../article/005.html',
   },
   {
     img:'IMG_6824.jpg',
     title: '疑似クラス:has()について考える',
     text: 'よくある画像の有る無しで試してみるとする…。保持したいのは以下の点',
-    lnkUrl:'004.html',
+    lnkUrl:'../article/004.html',
   },
   {
     img:'IMG_6840.jpg',
     title: 'CSSで好きな記述',
     text: '本当はカスケードレイヤーについて考えたかったんだけど、CSSの色々を書いてたら「あーこの記述すき！」というのが頭から離れなくなったので、それについて書き殴ることにする。',
-    lnkUrl:'003.html',
+    lnkUrl:'../article/003.html',
   },
   {
     img:'IMG_6824.jpg',
     title: 'スタイルクエリについて考える',
     text: '確かにこれは動的な箇所と組み合わせるとヒジョーに便利。な気がする。Nweが付く付かないとかカテゴリ毎に色を変えられるとか。手を広げすぎずという判断も重要だけど。',
-    lnkUrl:'002.html',
+    lnkUrl:'../article/002.html',
   },
 ];
 
 for(let i = 0; i < lists.length; i++) {
   const {lnkUrl, img, title, text} = lists[i];
   const content = `<li>
-<a href="../article/${lnkUrl}">
-<dl>
-<dt><img src="../images/${img}" width="100px" height="100px" alt=""></dt>
-<dd>
-<dl>
-<dt>${title}</dt>
-<dd>${text}</dd>
-<dd><button>詳細を見る</button></dd>
-</dl>
-</dd>
-</dl>
-</a>
+<article>
+<div class="box_img"><img src="../images/${img}" width="100px" height="100px" alt=""></div>
+<div class="box_txt">
+<h3>${title}</h3>
+<p>${text}</p>
+</div>
+<button onclick="loction.href='${lnkUrl}'">詳細を見る</button>
+</article>
 </li>`;
   cards.insertAdjacentHTML('beforeend', content);
 }

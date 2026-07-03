@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="../favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--ネットワーク上に公開する予定が無いのでbaseは一旦コメントアウト
 <base href="">
@@ -101,16 +101,15 @@
   <p class="mb20">一人で作業する分には慣れもあるのでメディアクエリを使う方が作業スピードが抑えられるぞ。<br>やっぱりまだまだ勉強が必要だ。</p>
 <style>
 ul.cards { display: flex; flex-direction:row; justify-content: space-between; flex-wrap: wrap;}
-ul.cards li { width: calc((100% - 40px) / 3);border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;overflow: hidden;}
+ul.cards li { width: calc((100% - 40px) / 3);border: 1px solid #ccc; border-radius: 4px; margin-bottom: 20px;overflow: hidden;}
 ul.cards li a { display: block;}
 ul.cards li a:hover {opacity: .8;}
-ul.cards li a dl {display: flex; flex-flow: column;}
-ul.cards li a dl dt {width:100%; height: auto; aspect-ratio: 8 / 5; line-height: 0; overflow: hidden;}
-ul.cards li a dl dt img {width: 100%; height: auto;}
-ul.cards li a dl dd {padding: 10px; width: 100%;}
-ul.cards li a dl dd dl {flex-flow: column; width: 100%;}
-ul.cards li a dl dd dl dt {line-height: 1.4; width: 100%; aspect-ratio: auto;}
-ul.cards li a dl dd dl dd {width:100%;padding: 0;display: -webkit-box;
+ul.cards li a article {display: flex; flex-flow: column;}
+ul.cards li a article .box_img {width:100%; height: auto; aspect-ratio: 8 / 5; line-height: 0; overflow: hidden;}
+ul.cards li a article .box_img img {width: 100%; height: auto;}
+ul.cards li a article .box_txt {padding: 10px; width: 100%; flex-flow: column;}
+ul.cards li a article .box_txt h3 {line-height: 1.4; width: 100%; aspect-ratio: auto;margin-bottom: 5px; padding: 0 0 5px; border-bottom: dotted 4px #ccc; border-left: 0; font-weight: bold;}
+ul.cards li a article .box_txt p {width:100%;padding: 0;display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 3; /* 制限したい行数が3の場合 */
           overflow: hidden;}
@@ -133,80 +132,68 @@ ul.cards li a dl dd dl dd {width:100%;padding: 0;display: -webkit-box;
 <ul class="cards">
 <li>
   <a href="#" name="">
-  <dl>
-  <dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
-  <dd>
-<dl>
-<dt>おすすめ1タイトル</dt>
-<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-</dl>
-</dd>
-  </dl>
+  <article>
+ <div class="box_img"><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></div>
+<div class="box_txt">
+<h3>おすすめ1タイトル</h3>
+<p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
+</div>
+  </article>
   </a>
   </li>
   <li>
   <a href="#" name="">
-  <dl>
-  <dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
-  <dd>
-<dl>
-<dt>おすすめ2タイトル</dt>
-<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-</dl>
-</dd>
-  </dl>
+  <article>
+  <div class="box_img"><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></div>
+  <div class="box_txt">
+<h3>おすすめ2タイトル</h3>
+<p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
+</div>
+  </article>
   </a>
   </li>
   <li>
   <a href="#" name="">
-  <dl>
-  <dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
-  <dd>
-<dl>
-<dt>おすすめ3タイトル</dt>
-<dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-</dl>
-</dd>
-  </dl>
+  <article>
+  <div class="box_img"><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></div>
+  <div class="box_txt">
+<h3>おすすめ3タイトル</h3>
+<p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
+</div>
+  </article>
   </a>
   </li>
   <li>
 <a href="#" name="">
-<dl>
-<dt><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-  <dl>
-  <dt>おすすめ1タイトル</dt>
-  <dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-  </dl>
-  </dd>
-</dl>
+<article>
+<div class="box_img"><img src="../images/IMG_6780.jpg" width="100px" height="100px" alt=""></div>
+<div class="box_txt">
+<h3>おすすめ1タイトル</h3>
+  <p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
+</div>
+</article>
 </a>
 </li>
 <li>
 <a href="#" name="">
-<dl>
-<dt><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-  <dl>
-  <dt>おすすめ2タイトル</dt>
-  <dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-  </dl>
-  </dd>
-</dl>
+<article>
+<div class="box_img"><img src="../images/IMG_6824.jpg" width="100px" height="100px" alt=""></div>
+<div class="box_txt">
+<h3>おすすめ2タイトル</h3>
+  <p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
+</div>
+</article>
 </a>
 </li>
 <li>
 <a href="#" name="">
-<dl>
-<dt><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></dt>
-<dd>
-  <dl>
-  <dt>おすすめ3タイトル</dt>
-  <dd>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</dd>
-  </dl>
-  </dd>
-</dl>
+<article>
+<div class="box_img"><img src="../images/IMG_6840.jpg" width="100px" height="100px" alt=""></div>
+<div class="box_txt">
+<h3>おすすめ3タイトル</h3>
+  <p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
+</div>
+</article>
 </a>
 </li>
   </ul>
